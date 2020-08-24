@@ -11,5 +11,5 @@
 			<property name="lineLimit" value="140" />
 		</properties>
 	</rule>
-    <file>.</file>
+	<file>.</file>
 </ruleset>
