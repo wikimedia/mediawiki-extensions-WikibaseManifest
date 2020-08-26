@@ -1,0 +1,13 @@
+{
+    "extra": {
+      "merge-plugin": {
+        "include": [
+          "extensions/Wikibase/composer.json",
+          "skins/Vector/composer.json",
+          "extensions/UniversalLanguageSelector/composer.json",
+          "extensions/cldr/composer.json",
+          "extensions/WikibaseManifest/composer.json"
+        ]
+      }
+    }
+  }
