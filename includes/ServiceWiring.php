@@ -44,7 +44,7 @@ return [
 		$rdfVocabulary = $repo->getRdfVocabulary();
 		$localEntitySource = $repo->getLocalEntitySource();
 		// TODO: Get Canonical Document URLS from a service not straight from remote
-		return new ConceptNamespaces( $localEntitySource, $rdfVocabulary, $repo->getCanonicalDocumentUrls() );
+		return new ConceptNamespaces( $localEntitySource, $rdfVocabulary );
 	},
 	WbManifest::EMPTY_ARRAY_CLEANER => function () {
 		return new EmptyArrayCleaner();
