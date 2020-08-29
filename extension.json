@@ -5,6 +5,9 @@
 	"version": "0.0.1",
 	"namemsg": "wikibaseManifest",
 	"descriptionmsg": "wikibaseManifest-desc",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
 	"manifest_version": 2,
 	"MessagesDirs": {
 		"WikibaseManifest": [
