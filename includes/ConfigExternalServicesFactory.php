@@ -38,8 +38,8 @@ class ConfigExternalServicesFactory implements ExternalServicesFactory {
 	}
 
 	private function getWikibaseConfiguredSparqlOrNull() {
-		// TODO this might not exist as we can't define a dependency on Wikbiase as it doesnt use
+		// TODO this might not exist as we can't define a dependency on Wikbase as it doesnt use
 		// extension.json yet
-		return $this->config->get( self::WB_REPO_SETTINGS )[self::WB_REPO_SPARQL_ENDPOINT];
+		return $this->config->get( self::WB_REPO_SETTINGS )[self::WB_REPO_SPARQL_ENDPOINT] ?? null;
 	}
 }
