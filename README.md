@@ -69,7 +69,7 @@ composer fix
 
 To run phpunit tests with mediawiki-docker-dev run:
 ```sh
-mw-docker-dev phpunit-file default extensions/WikibaseManifest/tests/
+mw-docker-dev phpunit-file default extensions/WikibaseManifest/tests/phpunit/
 ```
 
 **JS**
