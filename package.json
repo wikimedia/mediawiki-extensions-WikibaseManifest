@@ -13,7 +13,7 @@
 	},
 	"devDependencies": {
 		"api-testing": "1.0.3",
-		"eslint-config-wikimedia": "^0.15.1"
+		"eslint-config-wikimedia": "0.17.0"
 	},
 	"author": "",
 	"dependencies": {
