@@ -4,6 +4,6 @@
 			"WMDE"
 		]
 	},
-	"wikibaseManifest": "WikibaseManifest",
-	"wikibaseManifest-desc": "Combines metadata about a Wikibase installation exposing it as a simple API"
+	"wikibasemanifest": "WikibaseManifest",
+	"wikibasemanifest-desc": "Combines metadata about a Wikibase installation exposing it as a simple API"
 }

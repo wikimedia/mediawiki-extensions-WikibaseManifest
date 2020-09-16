@@ -4,6 +4,6 @@
 			"WMDE"
 		]
 	},
-	"wikibaseManifest": "The name of the extension",
-	"wikibaseManifest-desc": "{{desc|name=WikibaseManifest|url=}}"
+	"wikibasemanifest": "The name of the extension",
+	"wikibasemanifest-desc": "{{desc|name=WikibaseManifest|url=}}"
 }

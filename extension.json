@@ -3,8 +3,8 @@
 	"author": "The Wikidata team",
 	"license-name": "GPL-2.0-or-later",
 	"version": "0.0.1",
-	"namemsg": "wikibaseManifest",
-	"descriptionmsg": "wikibaseManifest-desc",
+	"namemsg": "wikibasemanifest",
+	"descriptionmsg": "wikibasemanifest-desc",
 	"requires": {
 		"MediaWiki": ">= 1.31.0"
 	},
