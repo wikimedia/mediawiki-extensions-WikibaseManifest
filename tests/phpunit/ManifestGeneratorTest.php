@@ -21,6 +21,8 @@ class ManifestGeneratorTest extends TestCase {
 	public function testGenerate() {
 		$siteString = 'manifestsite';
 		$serverString = 'http://cat/dog';
+		$apiAction = '/api.php';
+		$apiRest = '/rest.php';
 		$scriptString = '/wikipath';
 		$equivEntities = [ 'P1' => 'P2' ];
 		$mockConfig = new HashConfig(
@@ -64,6 +66,10 @@ class ManifestGeneratorTest extends TestCase {
 		$expectedSubset = [
 			'name' => $siteString,
 			'rootScriptUrl' => $serverString . $scriptString,
+			'api' => [
+				'action' => $serverString . $scriptString . $apiAction,
+				'rest' => $serverString . $scriptString . $apiRest
+			],
 			'equivEntities' => [
 				'wikidata' => $equivEntities,
 			],

@@ -34,6 +34,10 @@ class ManifestGenerator {
 		return [
 			'name' => $config->get( 'Sitename' ),
 			'rootScriptUrl' => $config->get( 'Server' ) . $config->get( 'ScriptPath' ),
+			'api' => [
+				'action' => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/api.php',
+				'rest' => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/rest.php'
+			],
 			'equivEntities' => [
 				'wikidata' => $this->equivEntitiesFactory->getEquivEntities()->toArray()
 			],
