@@ -6,8 +6,8 @@ use InvalidArgumentException;
 
 class EntityNamespaces {
 
-	public const NAMESPACE_ID = 'namespaceId';
-	public const NAMESPACE_STRING = 'namespaceString';
+	public const NAMESPACE_ID = 'namespace_id';
+	public const NAMESPACE_STRING = 'namespace_string';
 
 	/**
 	 * @var array

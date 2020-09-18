@@ -49,7 +49,7 @@ class ManifestGeneratorTest extends TestCase {
 			->method( 'getExternalServices' )
 			->willReturn( new ExternalServices( $externalServicesMappings ) );
 
-		$entityNamespaceMapping = [ 'item' => [ 'namespaceId' => 123, 'namespaceString' => 'Cat' ] ];
+		$entityNamespaceMapping = [ 'item' => [ 'namespace_id' => 123, 'namespace_string' => 'Cat' ] ];
 		$mockEntityNamespacesFactory = $this->createMock( EntityNamespacesFactory::class );
 		$mockEntityNamespacesFactory->expects( $this->atLeastOnce() )
 			->method( 'getEntityNamespaces' )
@@ -65,17 +65,17 @@ class ManifestGeneratorTest extends TestCase {
 
 		$expectedSubset = [
 			'name' => $siteString,
-			'rootScriptUrl' => $serverString . $scriptString,
+			'root_script_url' => $serverString . $scriptString,
 			'api' => [
 				'action' => $serverString . $scriptString . $apiAction,
 				'rest' => $serverString . $scriptString . $apiRest
 			],
-			'equivEntities' => [
-				'wikidata' => $equivEntities,
+			'equiv_entities' => [
+				'wikidata.org' => $equivEntities,
 			],
-			'localRdfNamespaces' => [ 'a' => 'bb' ],
-			'externalServices' => $externalServicesMappings,
-			'entities' => $entityNamespaceMapping
+			'local_rdf_namespaces' => [ 'a' => 'bb' ],
+			'external_services' => $externalServicesMappings,
+			'entity_sources' => $entityNamespaceMapping
 		];
 
 		foreach ( $expectedSubset as $key => $value ) {

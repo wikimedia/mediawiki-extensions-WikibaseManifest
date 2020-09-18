@@ -7,9 +7,9 @@ use InvalidArgumentException;
 class ExternalServices {
 
 	public const KEY_QUERYSERVICE = 'queryservice';
-	public const KEY_QUERYSERVICE_UI = 'queryservice-ui';
+	public const KEY_QUERYSERVICE_UI = 'queryservice_ui';
 	public const KEY_QUICKSTATEMENTS = 'quickstatements';
-	public const KEY_OPENREFINE_RECONCILE = 'openrefine-reconcile';
+	public const KEY_OPENREFINE_RECONCILE = 'openrefine_reconcile';
 
 	private const WHITELIST = [
 		self::KEY_QUERYSERVICE,
