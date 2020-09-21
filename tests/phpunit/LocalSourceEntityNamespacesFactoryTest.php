@@ -38,12 +38,12 @@ class LocalSourceEntityNamespacesFactoryTest extends TestCase {
 		$this->assertEquals(
 			[
 				'item' => [
-					'namespaceId' => $itemNamespaceId,
-					'namespaceString' => $itemNamespaceString,
+					'namespace_id' => $itemNamespaceId,
+					'namespace_string' => $itemNamespaceString,
 				],
 				'property' => [
-					'namespaceId' => $propertyNamespaceId,
-					'namespaceString' => $propertyNamespaceString,
+					'namespace_id' => $propertyNamespaceId,
+					'namespace_string' => $propertyNamespaceString,
 				],
 			],
 			$entityNamespacesFactory->getEntityNamespaces()->toArray()

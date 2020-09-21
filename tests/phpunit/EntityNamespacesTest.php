@@ -10,13 +10,13 @@ class EntityNamespacesTest extends TestCase {
 
 	public function dataProvider() {
 		return [
-			[ true, [ 'foo' => [ 'namespaceId' => 1, 'namespaceString' => '' ] ] ],
-			[ true, [ 'foo' => [ 'namespaceId' => 120, 'namespaceString' => 'Foo' ] ] ],
+			[ true, [ 'foo' => [ 'namespace_id' => 1, 'namespace_string' => '' ] ] ],
+			[ true, [ 'foo' => [ 'namespace_id' => 120, 'namespace_string' => 'Foo' ] ] ],
 			[ false, [ 'foo' => [] ] ],
 			[ false, [ 'foo' => 123 ] ],
-			[ false, [ 'foo' => [ 'namespaceId' => 1 ] ] ],
-			[ false, [ 'foo' => [ 'namespaceId' => 'foo', 'namespaceString' => '' ] ] ],
-			[ false, [ 'foo' => [ 'namespaceId' => 1, 'namespaceString' => 123 ] ] ],
+			[ false, [ 'foo' => [ 'namespace_id' => 1 ] ] ],
+			[ false, [ 'foo' => [ 'namespace_id' => 'foo', 'namespace_string' => '' ] ] ],
+			[ false, [ 'foo' => [ 'namespace_id' => 1, 'namespace_string' => 123 ] ] ],
 		];
 	}
 

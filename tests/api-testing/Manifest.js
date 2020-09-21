@@ -8,15 +8,15 @@ describe( 'Manifest', () => {
 			const { body } = await client.get( '/manifest' );
 			assert.hasAllKeys(
 				body,
-				[ 'name', 'api', 'rootScriptUrl', 'equivEntities', 'localRdfNamespaces', 'externalServices', 'entities' ]
+				[ 'name', 'api', 'root_script_url', 'equiv_entities', 'local_rdf_namespaces', 'external_services', 'entity_sources' ]
 			);
 			assert.typeOf( body.name, 'string' );
 			assert.typeOf( body.api, 'object' );
-			assert.typeOf( body.rootScriptUrl, 'string' );
-			assert.typeOf( body.equivEntities, 'object' );
-			assert.typeOf( body.localRdfNamespaces, 'object' );
-			assert.typeOf( body.externalServices, 'object' );
-			assert.typeOf( body.entities, 'object' );
+			assert.typeOf( body.root_script_url, 'string' );
+			assert.typeOf( body.equiv_entities, 'object' );
+			assert.typeOf( body.local_rdf_namespaces, 'object' );
+			assert.typeOf( body.external_services, 'object' );
+			assert.typeOf( body.entity_sources, 'object' );
 		} );
 	} );
 } );

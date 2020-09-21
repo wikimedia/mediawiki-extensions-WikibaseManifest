@@ -8,11 +8,11 @@ use MediaWikiTestCase;
 class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 
 	private const NAME = 'name';
-	private const ROOT_SCRIPT_URL = 'rootScriptUrl';
-	private const EQUIV_ENTITIES = 'equivEntities';
-	private const LOCAL_RDF_NAMESPACES = 'localRdfNamespaces';
-	private const EXTERNAL_SERVICES = 'externalServices';
-	private const ENTITIES = 'entities';
+	private const ROOT_SCRIPT_URL = 'root_script_url';
+	private const EQUIV_ENTITIES = 'equiv_entities';
+	private const LOCAL_RDF_NAMESPACES = 'local_rdf_namespaces';
+	private const EXTERNAL_SERVICES = 'external_services';
+	private const ENTITY_SOURCES = 'entity_sources';
 
 	public function testGenerate() {
 		$siteString = 'manifestsite';
@@ -44,9 +44,9 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 
 		$this->assertArrayHasKey( self::EQUIV_ENTITIES, $result );
 		$this->assertIsArray( $result[self::EQUIV_ENTITIES] );
-		$this->assertArrayHasKey( 'wikidata', $result[self::EQUIV_ENTITIES] );
-		$this->assertIsArray( $result[self::EQUIV_ENTITIES]['wikidata'] );
-		$this->assertArrayEquals( $equivEntities, $result[self::EQUIV_ENTITIES]['wikidata'] );
+		$this->assertArrayHasKey( 'wikidata.org', $result[self::EQUIV_ENTITIES] );
+		$this->assertIsArray( $result[self::EQUIV_ENTITIES]['wikidata.org'] );
+		$this->assertArrayEquals( $equivEntities, $result[self::EQUIV_ENTITIES]['wikidata.org'] );
 
 		$this->assertArrayHasKey( self::EXTERNAL_SERVICES, $result );
 		$this->assertIsArray( $result[self::EXTERNAL_SERVICES] );
@@ -78,9 +78,9 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 			$this->assertArrayHasKey( $key, $result[self::LOCAL_RDF_NAMESPACES] );
 		}
 
-		$this->assertArrayHasKey( self::ENTITIES, $result );
-		$this->assertIsArray( $result[self::ENTITIES] );
-		$this->assertArrayHasKey( 'item', $result[self::ENTITIES] );
-		$this->assertArrayHasKey( 'property', $result[self::ENTITIES] );
+		$this->assertArrayHasKey( self::ENTITY_SOURCES, $result );
+		$this->assertIsArray( $result[self::ENTITY_SOURCES] );
+		$this->assertArrayHasKey( 'item', $result[self::ENTITY_SOURCES] );
+		$this->assertArrayHasKey( 'property', $result[self::ENTITY_SOURCES] );
 	}
 }
