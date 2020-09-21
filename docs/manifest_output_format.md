@@ -35,14 +35,14 @@ If the extension is available provide the URL of the registration page, e.g. htt
 
 ### Reconciliation
 
-The prototype has that as an external service. OpenRefine's spec requires it.  
+The prototype has that as an external service. OpenRefine's spec requires it.
 It will be kept in the manifest.
 
 ### Edit Groups
 
 Edit Groups is a 3rd party service to meet the needs of Wikidata.org users who want to bulk rollback or bulk inspect a set of edits
 An important piece of information regarding edit groups is `url_schema`. The URL schema must contain the variable `${batch_id}`.
-The first version of the WikibaseManifest will not be deployed to Wikidata.org, and currently EditGroups is only (we strongly assume) used by Wikidata.  
+The first version of the WikibaseManifest will not be deployed to Wikidata.org, and currently EditGroups is only (we strongly assume) used by Wikidata.
 We won't include them in v1 of the manifest.
 
 ### RDF Namespaces
@@ -62,7 +62,7 @@ There will be an "api" block which will contain the action API as well as the Me
 
 Pros and cons of splitting up items and properties:
 
-`-` Introduces additional effort and a change to the spec if/when a new entity type needs to be added, such as: MediaInfo, Lexemes, and potentially EntitySchemas
+`-` Introduces additional effort and a change to the spec if/when a new entity type needs to be added, such as: MediaInfo, Lexemes, and potentially EntitySchemas  
 `+` Allows for validation of the input (the entity ID fits the expected pattern) to automatically reject incorrect input  
 `+` Separates concerns and makes the readability of the output better for humans  
 `-` Might not make sense if we decide to provide nothing but properties in `v1`  
@@ -93,28 +93,32 @@ We will split them for readability reasons.
 
 The WikibaseManifest will not include any information that is specific to the Federated Properties feature, such as `fedearatedPropertiesEnabled: true/false` or `federatedPropertiesSourceScriptUrl`. Information about federation scenarios and entity sources shall be added according to [T262807](https://phabricator.wikimedia.org/T262807), but likely not to the first release version of the Manifest extension.
 
-### Entity Sources
+### Local Entity Metadata
 
-List entity sources. We are providing only the local ones for now, but nevertheless we will list them under a "local" key, because it opens the possibility to add federated entity sources in a future version. E.g.
+List some information to help toolbuilders find local entities.
+We are providing only the local ones for now.
+
+This means that we will need to add another key for entities coming from a non-local source if we decide to expose that
+information in manifest. We agreed that adding a new key in this way would be "forwards compatible" and so would avoid
+locking us in to a certain style of response given that we don't yet know much about the needs of tools working with
+ federated entities.
 
 ```
-"entities": {
-  "local": {
+"local_entities": {
     "item": {
-      "namespaceId": 120,
-      "namespaceString": "Item"
+        "namespaceId": 120,
+        "namespaceString": "Item"
     },
     "property": {
-      "namespaceId": 122,
-      "namespaceString": "Property"
+        "namespaceId": 122,
+        "namespaceString": "Property"
     }
-  }
 }
 ```
 
 ### Other info
 
-Provide `max_lag`, which is the recommended maxlag by the administrator of this Wikibase. For example Wikidata's maxlag is 5s.  
+Provide `max_lag`, which is the recommended maxlag by the administrator of this Wikibase. For example Wikidata's maxlag is 5s.
 We should mention in the description or in the docs that the value of maxlag is in seconds.
 
 

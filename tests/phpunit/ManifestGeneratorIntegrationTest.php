@@ -14,7 +14,7 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 	private const EQUIV_ENTITIES = 'equiv_entities';
 	private const LOCAL_RDF_NAMESPACES = 'local_rdf_namespaces';
 	private const EXTERNAL_SERVICES = 'external_services';
-	private const ENTITY_SOURCES = 'entity_sources';
+	private const ENTITY_SOURCES = 'local_entities';
 
 	public function testGenerate() {
 		$siteString = 'manifestsite';

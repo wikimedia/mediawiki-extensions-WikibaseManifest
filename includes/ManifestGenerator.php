@@ -16,7 +16,7 @@ class ManifestGenerator {
 	public const WIKIDATA_ORG = 'wikidata.org';
 	public const LOCAL_RDF_NAMESPACES = 'local_rdf_namespaces';
 	public const EXTERNAL_SERVICES = 'external_services';
-	public const ENTITY_SOURCES = 'entity_sources';
+	public const LOCAL_ENTITIES = 'local_entities';
 
 	private $config;
 	private $mainPageUrl;
@@ -60,7 +60,7 @@ class ManifestGenerator {
 			],
 			self::LOCAL_RDF_NAMESPACES => $localRdfNamespaces,
 			self::EXTERNAL_SERVICES => $externalServices->toArray(),
-			self::ENTITY_SOURCES => $this->entityNamespacesFactory->getEntityNamespaces()->toArray()
+			self::LOCAL_ENTITIES => $this->entityNamespacesFactory->getEntityNamespaces()->toArray()
 		];
 	}
 }

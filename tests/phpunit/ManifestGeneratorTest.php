@@ -84,7 +84,7 @@ class ManifestGeneratorTest extends TestCase {
 			],
 			'local_rdf_namespaces' => [ 'a' => 'bb' ],
 			'external_services' => $externalServicesMappings,
-			'entity_sources' => $entityNamespaceMapping
+			'local_entities' => $entityNamespaceMapping
 		];
 
 		foreach ( $expectedSubset as $key => $value ) {
