@@ -12,3 +12,21 @@
       command:
           chdir: "{{ PROJECT_DIR }}"
           cmd: docker run --rm --volume {{ MW_PATH }}:/app composer install
+    - name: Ensure config is in place
+      copy:
+          src: "files/LocalSettings.d/wikibaseImport.php"
+          dest: "{{ MW_PATH }}/LocalSettings.d/wikibaseImport.php"
+          mode: 0644
+    - name: Ensure importIds.txt is in place
+      copy:
+          src: "files/importIds.txt"
+          dest: "{{ MW_PATH }}/extensions/WikibaseImport/data/importIds.txt"
+          mode: 0644
+    - name: Run Mediawiki update script to create WikibaseImport tables
+      command:
+          chdir: "{{ PROJECT_DIR }}"
+          cmd: "docker-compose exec -T wikibase php maintenance/update.php"
+    - name: Run import script in wikibase webserver docker container
+      command:
+          chdir: "{{ PROJECT_DIR }}"
+          cmd: "docker-compose exec -T wikibase php extensions/WikibaseImport/maintenance/importEntities.php --file /var/www/html/extensions/WikibaseImport/data/importIds.txt"
