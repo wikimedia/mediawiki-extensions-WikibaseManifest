@@ -5,10 +5,8 @@ $wgDisableOutputCompression = true;
 wfLoadExtension( 'WikibaseManifest' );
 
 $wgWbManifestExternalServiceMapping = [
-'queryservice-ui' => 'https://wikibase-query-testing.wmflabs.org/',
-'openrefine-reconcile' => 'https://www.example.org/api',
-];
-$wgWbManifestWikidataEntityMapping = [
+'queryservice_ui' => 'https://wikibase-query-testing.wmflabs.org/',
+'openrefine_reconcile' => 'https://www.example.org/api',
 ];
 
 ## Wikibase
