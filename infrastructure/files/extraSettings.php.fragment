@@ -20,3 +20,11 @@ wfLoadExtension( 'cldr' );
 
 ## ULS
 wfLoadExtension( 'UniversalLanguageSelector' );
+
+# enable debugging
+$wgDebugComments = true;
+
+# add extra configs
+foreach(glob(__DIR__ . "/LocalSettings.d/*.php") as $file){
+    require $file;
+}

@@ -54,6 +54,7 @@
         - { name: "{{ SCRIPTS_DIR }}", owner: "mediawiki" }
         - { name: "{{ LOG_DIR }}", owner: "mediawiki" }
         - { name: "{{ MW_PATH }}", owner: "mediawiki" }
+        - { name: "{{ MW_PATH }}/LocalSettings.d", owner: "mediawiki" }
 
     - name: Ensure update and logrotate scripts are in place
       template:
