@@ -11,6 +11,7 @@ use MediaWiki\Extension\WikibaseManifest\EquivEntitiesFactory;
 use MediaWiki\Extension\WikibaseManifest\ExternalServices;
 use MediaWiki\Extension\WikibaseManifest\ExternalServicesFactory;
 use MediaWiki\Extension\WikibaseManifest\ManifestGenerator;
+use MediaWiki\Extension\WikibaseManifest\TitleFactoryMainPageUrl;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,6 +22,7 @@ class ManifestGeneratorTest extends TestCase {
 	public function testGenerate() {
 		$siteString = 'manifestsite';
 		$serverString = 'http://cat/dog';
+		$mainPageUrlString = $serverString . '/MainPage';
 		$apiAction = '/api.php';
 		$apiRest = '/rest.php';
 		$scriptString = '/wikipath';
@@ -32,6 +34,11 @@ class ManifestGeneratorTest extends TestCase {
 			'ScriptPath' => $scriptString,
 			]
 		);
+
+		$mockMainPageUrl = $this->createMock( TitleFactoryMainPageUrl::class );
+		$mockMainPageUrl->expects( $this->once() )
+			->method( 'getValue' )
+			->willReturn( $mainPageUrlString );
 
 		$mockEquivEntitiesFactory = $this->createMock( EquivEntitiesFactory::class );
 		$mockEquivEntitiesFactory->expects( $this->once() )
@@ -56,6 +63,7 @@ class ManifestGeneratorTest extends TestCase {
 			->willReturn( new EntityNamespaces( $entityNamespaceMapping ) );
 		$generator = new ManifestGenerator(
 			$mockConfig,
+			$mockMainPageUrl,
 			$mockEquivEntitiesFactory,
 			$mockConceptNamespaces,
 			$mockExternalServicesFactory,
@@ -66,6 +74,7 @@ class ManifestGeneratorTest extends TestCase {
 		$expectedSubset = [
 			'name' => $siteString,
 			'root_script_url' => $serverString . $scriptString,
+			'main_page_url' => $mainPageUrlString,
 			'api' => [
 				'action' => $serverString . $scriptString . $apiAction,
 				'rest' => $serverString . $scriptString . $apiRest

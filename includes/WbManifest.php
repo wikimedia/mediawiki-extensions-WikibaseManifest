@@ -11,6 +11,7 @@ class WbManifest {
 	public const WIKIBASE_MANIFEST_CONFIG_EQUIV_ENTITIES_FACTORY = 'WikibaseManifestConfigEquivEntitiesFactory';
 	public const WIKIBASE_MANIFEST_CONCEPT_NAMESPACES = 'WikibaseManifestConceptNamespaces';
 	public const WIKIBASE_MANIFEST_LOCAL_SOURCE_ENTITY_NAMESPACES_FACTORY = 'WikibaseManifestLocalSourceEntityNamespacesFactory';
+	public const WIKIBASE_MANIFEST_TITLE_FACTORY_MAIN_PAGE_URL = 'WikibaseManifestTitleFactoryMainPageUrl';
 	public const EMPTY_ARRAY_CLEANER = 'EmptyArrayCleaner';
 
 }

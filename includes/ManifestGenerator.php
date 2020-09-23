@@ -8,6 +8,7 @@ class ManifestGenerator {
 
 	public const NAME = 'name';
 	public const ROOT_SCRIPT_URL = 'root_script_url';
+	public const MAIN_PAGE_URL = 'main_page_url';
 	public const API = 'api';
 	public const API_ACTION = 'action';
 	public const API_REST = 'rest';
@@ -18,6 +19,7 @@ class ManifestGenerator {
 	public const ENTITY_SOURCES = 'entity_sources';
 
 	private $config;
+	private $mainPageUrl;
 	private $equivEntitiesFactory;
 	private $conceptNamespaces;
 	private $externalServicesFactory;
@@ -25,12 +27,14 @@ class ManifestGenerator {
 
 	public function __construct(
 		Config $config,
+		TitleFactoryMainPageUrl $mainPageUrl,
 		EquivEntitiesFactory $equivEntitiesFactory,
 		ConceptNamespaces $conceptNamespaces,
 		ExternalServicesFactory $externalServicesFactory,
 		EntityNamespacesFactory $entityNamespacesFactory
 	) {
 		$this->config = $config;
+		$this->mainPageUrl = $mainPageUrl;
 		$this->equivEntitiesFactory = $equivEntitiesFactory;
 		$this->conceptNamespaces = $conceptNamespaces;
 		$this->externalServicesFactory = $externalServicesFactory;
@@ -46,6 +50,7 @@ class ManifestGenerator {
 		return [
 			self::NAME => $config->get( 'Sitename' ),
 			self::ROOT_SCRIPT_URL => $config->get( 'Server' ) . $config->get( 'ScriptPath' ),
+			self::MAIN_PAGE_URL => $this->mainPageUrl->getValue(),
 			self::API => [
 				self::API_ACTION => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/api.php',
 				self::API_REST => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/rest.php'
@@ -58,5 +63,4 @@ class ManifestGenerator {
 			self::ENTITY_SOURCES => $this->entityNamespacesFactory->getEntityNamespaces()->toArray()
 		];
 	}
-
 }

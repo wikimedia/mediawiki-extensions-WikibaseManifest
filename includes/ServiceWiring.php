@@ -6,12 +6,16 @@ use MediaWiki\Extension\WikibaseManifest\ConfigExternalServicesFactory;
 use MediaWiki\Extension\WikibaseManifest\EmptyArrayCleaner;
 use MediaWiki\Extension\WikibaseManifest\LocalSourceEntityNamespacesFactory;
 use MediaWiki\Extension\WikibaseManifest\ManifestGenerator;
+use MediaWiki\Extension\WikibaseManifest\TitleFactoryMainPageUrl;
 use MediaWiki\Extension\WikibaseManifest\WbManifest;
 use MediaWiki\MediaWikiServices;
 use Wikibase\Repo\WikibaseRepo;
 
 return [
 	WbManifest::WIKIBASE_MANIFEST_GENERATOR => function ( MediaWikiServices $services ) {
+		$mainPageUrl =
+			$services->getService( WbManifest::WIKIBASE_MANIFEST_TITLE_FACTORY_MAIN_PAGE_URL );
+
 		$equivEntitiesFactory =
 			$services->getService( WbManifest::WIKIBASE_MANIFEST_CONFIG_EQUIV_ENTITIES_FACTORY );
 
@@ -23,6 +27,7 @@ return [
 
 		return new ManifestGenerator(
 			$services->getMainConfig(),
+			$mainPageUrl,
 			$equivEntitiesFactory,
 			$conceptNamespaces,
 			$externalServicesFactory,
@@ -58,4 +63,7 @@ return [
 			$localEntitySource, $services->getNamespaceInfo()
 		);
 	},
+	WbManifest::WIKIBASE_MANIFEST_TITLE_FACTORY_MAIN_PAGE_URL => function ( MediaWikiServices $services ) {
+		return new TitleFactoryMainPageUrl( $services->getTitleFactory() );
+	}
 ];
