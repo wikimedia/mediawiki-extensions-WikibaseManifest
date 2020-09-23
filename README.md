@@ -1,13 +1,11 @@
 # WikibaseManifest
 
-**__This is a prototype and is not currently supported or deployed by WMDE.__**
-
 WikibaseManifest is an extension that combines metadata about a Wikibase installation exposing it as a simple API.
 The goal is to help tool makers write tools that can target any wikibase.
 
-Example output can be found in the [examples directory](/docs/examples), e.g [wikidata](/docs/examples/wikidata.json), raw json can be [retrieved too](https://raw.githubusercontent.com/wmde/WikibaseManifest/master/docs/examples/wikidata.json).
+The manifest will be exposed at an endpoint such as https://www.wikidata.org/w/rest.php/wikibase/manifest/v0/manifest
 
-This would be exposed at an endpoint such as https://www.wikidata.org/w/rest.php/wikibase/manifest/v0/manifest
+More about the format of the manifest and how it came to be can be found [here](/docs/manifest_output_format.md).
 
 ### Installation
 
@@ -17,7 +15,7 @@ In order to use this extension you need to enable the MediaWiki REST API.
 $wgEnableRestAPI = true;
 ```
 
-Then load the extension as you would normally:
+Then load the extension.
 
 ```php
 wfLoadExtension( 'WikibaseManifest' );
@@ -27,7 +25,7 @@ And configure as appropriate:
 
 ```php
 $wgWbManifestExternalServiceMapping = [
-	'queryservice-ui' => 'https://query.wikidata.org',
+	'queryservice_ui' => 'https://query.wikidata.org',
 ];
 $wgWbManifestWikidataMapping = [
 	'P31' => 'P1',
@@ -35,20 +33,6 @@ $wgWbManifestWikidataMapping = [
 ```
 
 ### Development
-
-This extension was developed as part of the 2020 April prototyping week at WMDE.
-
-#### Decisions & reasoning
-
-Decisions, how things work, and why are documented below:
-
- - [API](/docs/api.md)
-   - [entityNamespaces](/docs/entityNamespaces.md)
-   - [equivEntities](/docs/equivEntities.md)
-   - [externalServices](/docs/externalServices.md)
-   - [localRdfNamespaces](/docs/localRdfNamespaces.md)
-
-#### Doing stuff
 
 We recommend using `mediawiki-docker-dev` for development.
 
