@@ -1,0 +1,14 @@
+- hosts: test_systems
+  name: "Seed test system with data"
+  become: yes
+  tasks:
+    - name: Checkout WikibaseImport
+      git:
+          repo: "https://github.com/wikidata/WikibaseImport"
+          dest: "{{ MW_PATH }}/extensions/WikibaseImport"
+          depth: 1
+          version: master
+    - name: Run Composer install
+      command:
+          chdir: "{{ PROJECT_DIR }}"
+          cmd: docker run --rm --volume {{ MW_PATH }}:/app composer install
