@@ -92,6 +92,12 @@
           dest: "{{ MW_PATH }}/composer.local.json"
           mode: 0644
 
+    -   name: Ensure .htaccess is in place
+        copy:
+            src: "files/htaccess"
+            dest: "{{ MW_PATH }}/.htaccess"
+            mode: 0644
+
     - name: Ensure docker is started
       systemd:
           state: started
