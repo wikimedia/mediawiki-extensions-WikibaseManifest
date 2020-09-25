@@ -24,7 +24,10 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 		$mainPageUrlString = $serverString . '/index.php/Main_Page';
 		$actionApiUrlString = $serverString . $scriptString . '/api.php';
 		$restApiUrlString = $serverString . $scriptString . '/rest.php';
-		$equivEntities = [ 'P1' => 'P2' ];
+		$equivEntities = [
+			'properties' => [ 'P1' => 'P2' ],
+			'items' => [ 'Q42' => 'Q1' ]
+		];
 		$externalServices = [ 'quickstatements' => 'http://quickstatements.net' ];
 		$this->setMwGlobals(
 			[

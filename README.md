@@ -28,7 +28,12 @@ $wgWbManifestExternalServiceMapping = [
 	'queryservice_ui' => 'https://query.wikidata.org',
 ];
 $wgWbManifestWikidataMapping = [
-	'P31' => 'P1',
+	'properties' => [
+		'P31' => 'P1',
+	],
+	'items' => [
+		'Q5' => 'Q15'
+	],
 ];
 ```
 

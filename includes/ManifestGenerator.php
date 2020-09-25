@@ -45,7 +45,14 @@ class ManifestGenerator {
 		$config = $this->config;
 
 		$localRdfNamespaces = $this->conceptNamespaces->getLocal();
-		$externalServices = $this->externalServicesFactory->getExternalServices();
+		$externalServices = $this->externalServicesFactory->getExternalServices()->toArray();
+		$localEntities = $this->entityNamespacesFactory->getEntityNamespaces()->toArray();
+		$equivEntitiesConfig = $this->equivEntitiesFactory->getEquivEntities()->toArray();
+		$equivEntities = [];
+		if ( !empty( $equivEntitiesConfig ) ) {
+			$equivEntities[ self::WIKIDATA_ORG ] = $equivEntitiesConfig;
+		}
+
 		// TODO perhaps we should only add keys to this result when the values are not empty
 		return [
 			self::NAME => $config->get( 'Sitename' ),
@@ -55,12 +62,10 @@ class ManifestGenerator {
 				self::API_ACTION => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/api.php',
 				self::API_REST => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/rest.php'
 			],
-			self::EQUIV_ENTITIES => [
-				self::WIKIDATA_ORG => $this->equivEntitiesFactory->getEquivEntities()->toArray()
-			],
+			self::EQUIV_ENTITIES => $equivEntities,
 			self::LOCAL_RDF_NAMESPACES => $localRdfNamespaces,
-			self::EXTERNAL_SERVICES => $externalServices->toArray(),
-			self::LOCAL_ENTITIES => $this->entityNamespacesFactory->getEntityNamespaces()->toArray()
+			self::EXTERNAL_SERVICES => $externalServices,
+			self::LOCAL_ENTITIES => $localEntities
 		];
 	}
 }
