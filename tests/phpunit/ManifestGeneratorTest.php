@@ -11,6 +11,8 @@ use MediaWiki\Extension\WikibaseManifest\EquivEntitiesFactory;
 use MediaWiki\Extension\WikibaseManifest\ExternalServices;
 use MediaWiki\Extension\WikibaseManifest\ExternalServicesFactory;
 use MediaWiki\Extension\WikibaseManifest\ManifestGenerator;
+use MediaWiki\Extension\WikibaseManifest\MaxLag;
+use MediaWiki\Extension\WikibaseManifest\MaxLagFactory;
 use MediaWiki\Extension\WikibaseManifest\TitleFactoryMainPageUrl;
 use PHPUnit\Framework\TestCase;
 
@@ -30,11 +32,13 @@ class ManifestGeneratorTest extends TestCase {
 			'properties' => [ 'P1' => 'P2' ],
 			'items' => [ 'Q42' => 'Q1' ]
 		];
+		$maxLag = 5;
 		$mockConfig = new HashConfig(
 			[
 			'Server' => $serverString,
 			'Sitename' => $siteString,
 			'ScriptPath' => $scriptString,
+			'WbManifestMaxLag' => $maxLag,
 			]
 		);
 
@@ -64,13 +68,20 @@ class ManifestGeneratorTest extends TestCase {
 		$mockEntityNamespacesFactory->expects( $this->atLeastOnce() )
 			->method( 'getEntityNamespaces' )
 			->willReturn( new EntityNamespaces( $entityNamespaceMapping ) );
+
+		$mockMaxLagFactory = $this->createMock( MaxLagFactory::class );
+		$mockMaxLagFactory->expects( $this->atLeastOnce() )
+			->method( 'getMaxLag' )
+			->willReturn( new MaxLag( $maxLag ) );
+
 		$generator = new ManifestGenerator(
 			$mockConfig,
 			$mockMainPageUrl,
 			$mockEquivEntitiesFactory,
 			$mockConceptNamespaces,
 			$mockExternalServicesFactory,
-			$mockEntityNamespacesFactory
+			$mockEntityNamespacesFactory,
+			$mockMaxLagFactory
 		);
 		$result = $generator->generate();
 
@@ -87,7 +98,8 @@ class ManifestGeneratorTest extends TestCase {
 			],
 			'local_rdf_namespaces' => [ 'a' => 'bb' ],
 			'external_services' => $externalServicesMappings,
-			'local_entities' => $entityNamespaceMapping
+			'local_entities' => $entityNamespaceMapping,
+			'max_lag' => $maxLag
 		];
 
 		foreach ( $expectedSubset as $key => $value ) {
@@ -103,7 +115,8 @@ class ManifestGeneratorTest extends TestCase {
 			$this->createMock( EquivEntitiesFactory::class ),
 			$this->createMock( ConceptNamespaces::class ),
 			$this->createMock( ExternalServicesFactory::class ),
-			$this->createMock( EntityNamespacesFactory::class )
+			$this->createMock( EntityNamespacesFactory::class ),
+			$this->createMock( MaxLagFactory::class )
 		);
 
 		$actualResult = $generator->generate();

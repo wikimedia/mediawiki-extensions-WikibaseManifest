@@ -15,6 +15,7 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 	private const LOCAL_RDF_NAMESPACES = 'local_rdf_namespaces';
 	private const EXTERNAL_SERVICES = 'external_services';
 	private const ENTITY_SOURCES = 'local_entities';
+	private const MAX_LAG = 'max_lag';
 
 	public function testGenerate() {
 		$siteString = 'manifestsite';
@@ -29,6 +30,7 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 			'items' => [ 'Q42' => 'Q1' ]
 		];
 		$externalServices = [ 'quickstatements' => 'http://quickstatements.net' ];
+		$maxLag = 23;
 		$this->setMwGlobals(
 			[
 			'wgServer' => $serverString,
@@ -36,13 +38,14 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 			'wgScriptPath' => $scriptString,
 			'wgWbManifestWikidataEntityMapping' => $equivEntities,
 			'wgWbManifestExternalServiceMapping' => $externalServices,
+			'wgWbManifestMaxLag' => $maxLag
 			]
 		);
 		$this->mergeMwGlobalArrayValue( 'wgWBRepoSettings', [ 'sparqlEndpoint' => null ] );
 		$generator = MediaWikiServices::getInstance()->getService( 'WikibaseManifestGenerator' );
 		$result = $generator->generate();
 
-		$this->assertEquals( 8, count( $result ) );
+		$this->assertEquals( 9, count( $result ) );
 
 		$this->assertArrayHasKey( self::NAME, $result );
 		$this->assertIsString( $result[self::NAME] );
@@ -105,5 +108,20 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 		$this->assertIsArray( $result[self::ENTITY_SOURCES] );
 		$this->assertArrayHasKey( 'item', $result[self::ENTITY_SOURCES] );
 		$this->assertArrayHasKey( 'property', $result[self::ENTITY_SOURCES] );
+
+		$this->assertArrayHasKey( self::MAX_LAG, $result );
+		$this->assertIsInt( $result[self::MAX_LAG] );
+		$this->assertEquals( $maxLag, $result[self::MAX_LAG] );
+	}
+
+	public function testMaxLagDefaultValue() {
+		// create generator without pre-configured 'wgWbManifestMaxLag' value
+		$generator = MediaWikiServices::getInstance()->getService( 'WikibaseManifestGenerator' );
+		$result = $generator->generate();
+
+		// expect default value
+		$this->assertArrayHasKey( self::MAX_LAG, $result );
+		$this->assertIsInt( $result[self::MAX_LAG] );
+		$this->assertEquals( 5, $result[self::MAX_LAG] );
 	}
 }

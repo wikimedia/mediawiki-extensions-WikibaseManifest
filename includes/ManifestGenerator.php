@@ -17,6 +17,7 @@ class ManifestGenerator {
 	public const LOCAL_RDF_NAMESPACES = 'local_rdf_namespaces';
 	public const EXTERNAL_SERVICES = 'external_services';
 	public const LOCAL_ENTITIES = 'local_entities';
+	public const MAX_LAG = 'max_lag';
 
 	private $config;
 	private $mainPageUrl;
@@ -24,6 +25,7 @@ class ManifestGenerator {
 	private $conceptNamespaces;
 	private $externalServicesFactory;
 	private $entityNamespacesFactory;
+	private $maxLagFactory;
 
 	public function __construct(
 		Config $config,
@@ -31,7 +33,8 @@ class ManifestGenerator {
 		EquivEntitiesFactory $equivEntitiesFactory,
 		ConceptNamespaces $conceptNamespaces,
 		ExternalServicesFactory $externalServicesFactory,
-		EntityNamespacesFactory $entityNamespacesFactory
+		EntityNamespacesFactory $entityNamespacesFactory,
+		MaxLagFactory $maxLagFactory
 	) {
 		$this->config = $config;
 		$this->mainPageUrl = $mainPageUrl;
@@ -39,6 +42,7 @@ class ManifestGenerator {
 		$this->conceptNamespaces = $conceptNamespaces;
 		$this->externalServicesFactory = $externalServicesFactory;
 		$this->entityNamespacesFactory = $entityNamespacesFactory;
+		$this->maxLagFactory = $maxLagFactory;
 	}
 
 	public function generate(): array {
@@ -58,6 +62,7 @@ class ManifestGenerator {
 			self::NAME => $config->get( 'Sitename' ),
 			self::ROOT_SCRIPT_URL => $config->get( 'Server' ) . $config->get( 'ScriptPath' ),
 			self::MAIN_PAGE_URL => $this->mainPageUrl->getValue(),
+			self::MAX_LAG => $this->maxLagFactory->getMaxLag()->getValue(),
 			self::API => [
 				self::API_ACTION => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/api.php',
 				self::API_REST => $config->get( 'Server' ) . $config->get( 'ScriptPath' ) . '/rest.php'

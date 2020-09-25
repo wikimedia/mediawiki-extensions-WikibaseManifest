@@ -3,6 +3,7 @@
 use MediaWiki\Extension\WikibaseManifest\ConceptNamespaces;
 use MediaWiki\Extension\WikibaseManifest\ConfigEquivEntitiesFactory;
 use MediaWiki\Extension\WikibaseManifest\ConfigExternalServicesFactory;
+use MediaWiki\Extension\WikibaseManifest\ConfigMaxLagFactory;
 use MediaWiki\Extension\WikibaseManifest\EmptyArrayCleaner;
 use MediaWiki\Extension\WikibaseManifest\LocalSourceEntityNamespacesFactory;
 use MediaWiki\Extension\WikibaseManifest\ManifestGenerator;
@@ -25,13 +26,16 @@ return [
 
 		$entityNamespacesFactory = $services->getService( WbManifest::WIKIBASE_MANIFEST_LOCAL_SOURCE_ENTITY_NAMESPACES_FACTORY );
 
+		$maxLagFactory = $services->getService( WbManifest::WIKIBASE_MANIFEST_CONFIG_MAX_LAG_FACTORY );
+
 		return new ManifestGenerator(
 			$services->getMainConfig(),
 			$mainPageUrl,
 			$equivEntitiesFactory,
 			$conceptNamespaces,
 			$externalServicesFactory,
-			$entityNamespacesFactory
+			$entityNamespacesFactory,
+			$maxLagFactory
 		);
 	},
 	WbManifest::WIKIBASE_MANIFEST_CONFIG_EQUIV_ENTITIES_FACTORY => function ( MediaWikiServices $services ) {
@@ -65,5 +69,10 @@ return [
 	},
 	WbManifest::WIKIBASE_MANIFEST_TITLE_FACTORY_MAIN_PAGE_URL => function ( MediaWikiServices $services ) {
 		return new TitleFactoryMainPageUrl( $services->getTitleFactory() );
+	},
+	WbManifest::WIKIBASE_MANIFEST_CONFIG_MAX_LAG_FACTORY => function ( MediaWikiServices $services ) {
+		return new ConfigMaxLagFactory(
+			$services->getMainConfig(), WbManifest::MAX_LAG_CONFIG
+		);
 	}
 ];

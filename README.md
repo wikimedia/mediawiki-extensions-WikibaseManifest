@@ -35,6 +35,7 @@ $wgWbManifestWikidataMapping = [
 		'Q5' => 'Q15'
 	],
 ];
+$wgWbManifestMaxLag = 7;
 ```
 
 ### Development

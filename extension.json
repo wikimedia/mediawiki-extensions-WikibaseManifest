@@ -22,6 +22,10 @@
 		"WbManifestExternalServiceMapping": {
 			"description": "The mapping of external service identifiers to URLs.",
 			"value": []
+		},
+		"WbManifestMaxLag": {
+			"description": "The max_lag value in seconds.",
+			"value": 5
 		}
 	},
 	"AutoloadNamespaces": {
