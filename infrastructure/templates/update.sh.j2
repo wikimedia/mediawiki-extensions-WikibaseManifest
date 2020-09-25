@@ -24,6 +24,7 @@ git pull origin master 2>> $ERROR_LOG | tee -a ${GIT_LOG}
 log "## updating Wikibase" "${UPDATE_LOG} ${GIT_LOG}"
 cd extensions/Wikibase
 git pull origin master 2>> $ERROR_LOG | tee -a ${GIT_LOG}
+git submodule update
 
 log "## updating Wikibase Manifest" "${UPDATE_LOG} ${GIT_LOG}"
 cd extensions/WikibaseManifest
