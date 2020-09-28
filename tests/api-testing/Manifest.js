@@ -1,3 +1,5 @@
+'use strict';
+
 const { assert, REST } = require( 'api-testing' );
 
 describe( 'Manifest', () => {
@@ -8,7 +10,7 @@ describe( 'Manifest', () => {
 			const { body } = await client.get( '/manifest' );
 			assert.hasAllKeys(
 				body,
-				[ 'name', 'api', 'root_script_url', 'main_page_url', 'equiv_entities', 'local_rdf_namespaces', 'external_services', 'local_entities', 'max_lag']
+				[ 'name', 'api', 'root_script_url', 'main_page_url', 'equiv_entities', 'local_rdf_namespaces', 'external_services', 'local_entities', 'max_lag' ]
 			);
 			assert.typeOf( body.name, 'string' );
 			assert.typeOf( body.api, 'object' );
