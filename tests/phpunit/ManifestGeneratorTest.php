@@ -26,7 +26,10 @@ class ManifestGeneratorTest extends TestCase {
 		$apiAction = '/api.php';
 		$apiRest = '/rest.php';
 		$scriptString = '/wikipath';
-		$equivEntities = [ 'P1' => 'P2' ];
+		$equivEntities = [
+			'properties' => [ 'P1' => 'P2' ],
+			'items' => [ 'Q42' => 'Q1' ]
+		];
 		$mockConfig = new HashConfig(
 			[
 			'Server' => $serverString,
@@ -91,5 +94,21 @@ class ManifestGeneratorTest extends TestCase {
 			$this->assertArrayHasKey( $key, $result );
 			$this->assertSame( $value, $result[$key] );
 		}
+	}
+
+	public function testGivenEquivEntitiesIsNotConfigured_WikidataOrgObjectIsNotGeneratedInTheManifest() {
+		$generator = new ManifestGenerator(
+			new HashConfig( [ 'Server' => '', 'Sitename' => '', 'ScriptPath' => '', 'api' => [ 'action' => '', 'rest' => '' ] ] ),
+			$this->createMock( TitleFactoryMainPageUrl::class ),
+			$this->createMock( EquivEntitiesFactory::class ),
+			$this->createMock( ConceptNamespaces::class ),
+			$this->createMock( ExternalServicesFactory::class ),
+			$this->createMock( EntityNamespacesFactory::class )
+		);
+
+		$actualResult = $generator->generate();
+
+		$this->assertArrayHasKey( 'equiv_entities', $actualResult );
+		$this->assertSame( [], $actualResult[ 'equiv_entities' ] );
 	}
 }
