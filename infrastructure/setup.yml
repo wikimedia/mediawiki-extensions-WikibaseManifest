@@ -86,6 +86,7 @@
           - { path: "extensions/cldr" }
           - { path: "extensions/Wikibase" }
           - { path: "extensions/WikibaseManifest" }
+          - { path: "extensions/OAuth" }
 
     - name: Ensure composer.local.json is in place
       copy:

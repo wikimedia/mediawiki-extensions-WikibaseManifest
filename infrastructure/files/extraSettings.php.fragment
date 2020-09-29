@@ -21,6 +21,9 @@ wfLoadExtension( 'cldr' );
 ## ULS
 wfLoadExtension( 'UniversalLanguageSelector' );
 
+## OAuth
+wfLoadExtension( 'OAuth' );
+
 # enable debugging
 $wgDebugComments = true;
 
