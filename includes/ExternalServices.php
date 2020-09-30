@@ -11,7 +11,7 @@ class ExternalServices {
 	public const KEY_QUICKSTATEMENTS = 'quickstatements';
 	public const KEY_OPENREFINE_RECONCILE = 'openrefine_reconcile';
 
-	private const WHITELIST = [
+	private const ALLOWLIST = [
 		self::KEY_QUERYSERVICE,
 		self::KEY_QUERYSERVICE_UI,
 		self::KEY_QUICKSTATEMENTS,
@@ -33,7 +33,7 @@ class ExternalServices {
 
 	private function validateMapping( array $mapping ): void {
 		foreach ( $mapping as $k => $v ) {
-			if ( !is_string( $k ) || !in_array( $k, self::WHITELIST ) ) {
+			if ( !is_string( $k ) || !in_array( $k, self::ALLOWLIST ) ) {
 				throw new InvalidArgumentException( 'Keys of mapping should be whitelisted strings' );
 			}
 			if ( !is_string( $v ) || !filter_var( $v, FILTER_VALIDATE_URL ) ) {
