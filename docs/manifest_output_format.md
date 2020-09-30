@@ -4,14 +4,14 @@
 
 We need to determine the standard format of the WikibaseManifest output. We looked at different types of information (listed below), some of which are either listed in the [WikibaseManifest prototype](https://github.com/wmde/WikibaseManifest) or [OpenRefine's manifest spec](https://github.com/OpenRefine/wikibase-manifests) (or both).
 
-### Entity Mapping
+### Entity Mappings
 
 There are two options of interest:
 - mapping between Wikidata entity ID and local Wikibase ID, e.g. `"P31": "P1"`
 - using the label and the respective ID on the local wikibase, e.g. `“instance_of”: “P1”`
 
 The goal of the manifest (in v1) is to get Wikibase users to benefit from (at least a portion of) the wealth of tools that already exist for Wikidata.
-At the moment of writing this ADR, Wikidata is the only "hub" in the Wikibase ecosystem. This won't be the case forever, but for now it's reasonable and efficient to optimize the manifest for that.
+At the moment of defining the manifest's output format, Wikidata is the only "hub" in the Wikibase ecosystem. This won't be the case forever, but for now it's reasonable and efficient to optimize the manifest for that.
 Possible future extension for other mappings can be allowed by listing all the wikidata ones under "wikidata".
 
 Map entities by using Wikidata entity ID and local Wikibase ID, e.g. `"P31" : "P1"`. The mapping will be keyed under "wikidata.org".
@@ -47,7 +47,7 @@ We won't include them in v1 of the manifest.
 
 ### RDF Namespaces
 
-The prototype lists them and we consider them important, so they will be kept.
+They are listed and required.
 
 ### MediaWiki info
 
@@ -96,7 +96,8 @@ The WikibaseManifest will not include any information that is specific to the Fe
 ### Local Entity Metadata
 
 List some information to help toolbuilders find local entities.
-We are providing only the local ones for now.
+We are providing only the local ones for now.  
+The entity list is built from all LOCAL entity types that are enabled via the Local `EntitySources`, so that it also serves as the list of enabled entity types.
 
 This means that we will need to add another key for entities coming from a non-local source if we decide to expose that
 information in manifest. We agreed that adding a new key in this way would be "forwards compatible" and so would avoid
@@ -115,6 +116,24 @@ locking us in to a certain style of response given that we don't yet know much a
     }
 }
 ```
+
+### External Services
+
+We chose one external service to be build from the Wikibase config (when set), the SPARQL endpoint address.
+The rest is defined as specific config options.
+There is no real way to automagically discover this, so it must be specified by a user.  
+We restricted the services to those in an allowlist, so that there is no chance of name conflicts for different services (eg. 2 wikibases choosing `qs` to mean something different).
+The allowlist can currently be found in `ExternalServices`, listing the following services:
+
+ - queryservice
+ - queryservice_ui
+ - quickstatements
+ - openrefine_reconcile
+
+We expect to expand this list to include more services in the future.  
+We decided not to call the main query service `sparql` as it could be possible for multiple query services to exist.
+The `queryservice` is known to be the WMF Wikbase query service with extra features such as `LABEL SERVICE` etc.
+A generic SPARQL endpoint may not have these.
 
 ### Other info
 
