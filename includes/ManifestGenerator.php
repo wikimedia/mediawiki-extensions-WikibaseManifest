@@ -18,6 +18,8 @@ class ManifestGenerator {
 	public const EXTERNAL_SERVICES = 'external_services';
 	public const LOCAL_ENTITIES = 'local_entities';
 	public const MAX_LAG = 'max_lag';
+	private const OAUTH = 'oauth';
+	private const OAUTH_REGISTRATION_PAGE = 'registration_page';
 
 	private $config;
 	private $mainPageUrl;
@@ -26,6 +28,7 @@ class ManifestGenerator {
 	private $externalServicesFactory;
 	private $entityNamespacesFactory;
 	private $maxLagFactory;
+	private $oAuthUrlFactory;
 
 	public function __construct(
 		Config $config,
@@ -34,7 +37,8 @@ class ManifestGenerator {
 		ConceptNamespaces $conceptNamespaces,
 		ExternalServicesFactory $externalServicesFactory,
 		EntityNamespacesFactory $entityNamespacesFactory,
-		MaxLagFactory $maxLagFactory
+		MaxLagFactory $maxLagFactory,
+		OAuthUrlFactory $oAuthUrlFactory
 	) {
 		$this->config = $config;
 		$this->mainPageUrl = $mainPageUrl;
@@ -43,6 +47,7 @@ class ManifestGenerator {
 		$this->externalServicesFactory = $externalServicesFactory;
 		$this->entityNamespacesFactory = $entityNamespacesFactory;
 		$this->maxLagFactory = $maxLagFactory;
+		$this->oAuthUrlFactory = $oAuthUrlFactory;
 	}
 
 	public function generate(): array {
@@ -67,7 +72,10 @@ class ManifestGenerator {
 			],
 			self::LOCAL_RDF_NAMESPACES => $localRdfNamespaces,
 			self::EXTERNAL_SERVICES => $externalServices,
-			self::LOCAL_ENTITIES => $localEntities
+			self::LOCAL_ENTITIES => $localEntities,
+			self::OAUTH => [
+				self::OAUTH_REGISTRATION_PAGE => $this->oAuthUrlFactory->getOAuthUrl()->getValue()
+			]
 		];
 	}
 }

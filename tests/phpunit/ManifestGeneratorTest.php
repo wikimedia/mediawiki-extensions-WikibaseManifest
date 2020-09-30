@@ -13,6 +13,8 @@ use MediaWiki\Extension\WikibaseManifest\ExternalServicesFactory;
 use MediaWiki\Extension\WikibaseManifest\ManifestGenerator;
 use MediaWiki\Extension\WikibaseManifest\MaxLag;
 use MediaWiki\Extension\WikibaseManifest\MaxLagFactory;
+use MediaWiki\Extension\WikibaseManifest\OAuthUrl;
+use MediaWiki\Extension\WikibaseManifest\OAuthUrlFactory;
 use MediaWiki\Extension\WikibaseManifest\TitleFactoryMainPageUrl;
 use PHPUnit\Framework\TestCase;
 
@@ -81,7 +83,8 @@ class ManifestGeneratorTest extends TestCase {
 			$mockConceptNamespaces,
 			$mockExternalServicesFactory,
 			$mockEntityNamespacesFactory,
-			$mockMaxLagFactory
+			$mockMaxLagFactory,
+			$this->getMockOAuthUrlFactory()
 		);
 		$result = $generator->generate();
 
@@ -106,5 +109,13 @@ class ManifestGeneratorTest extends TestCase {
 			$this->assertArrayHasKey( $key, $result );
 			$this->assertSame( $value, $result[$key] );
 		}
+	}
+
+	private function getMockOAuthUrlFactory(): OAuthUrlFactory {
+		$OAuthUrlFactory = $this->createMock( OAuthUrlFactory::class );
+		$OAuthUrlFactory
+			->method( 'getOAuthUrl' )
+			->willReturn( $this->createMock( OAuthUrl::class ) );
+		return $OAuthUrlFactory;
 	}
 }

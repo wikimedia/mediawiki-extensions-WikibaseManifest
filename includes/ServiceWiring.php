@@ -7,6 +7,7 @@ use MediaWiki\Extension\WikibaseManifest\ConfigMaxLagFactory;
 use MediaWiki\Extension\WikibaseManifest\EmptyValueCleaner;
 use MediaWiki\Extension\WikibaseManifest\LocalSourceEntityNamespacesFactory;
 use MediaWiki\Extension\WikibaseManifest\ManifestGenerator;
+use MediaWiki\Extension\WikibaseManifest\OAuthUrlFactory;
 use MediaWiki\Extension\WikibaseManifest\TitleFactoryMainPageUrl;
 use MediaWiki\Extension\WikibaseManifest\WbManifest;
 use MediaWiki\MediaWikiServices;
@@ -28,6 +29,8 @@ return [
 
 		$maxLagFactory = $services->getService( WbManifest::WIKIBASE_MANIFEST_CONFIG_MAX_LAG_FACTORY );
 
+		$oauthUrlFactory = $services->getService( WbManifest::OAUTH_URL_FACTORY );
+
 		return new ManifestGenerator(
 			$services->getMainConfig(),
 			$mainPageUrl,
@@ -35,7 +38,8 @@ return [
 			$conceptNamespaces,
 			$externalServicesFactory,
 			$entityNamespacesFactory,
-			$maxLagFactory
+			$maxLagFactory,
+			$oauthUrlFactory
 		);
 	},
 	WbManifest::WIKIBASE_MANIFEST_CONFIG_EQUIV_ENTITIES_FACTORY => function ( MediaWikiServices $services ) {
@@ -73,6 +77,12 @@ return [
 	WbManifest::WIKIBASE_MANIFEST_CONFIG_MAX_LAG_FACTORY => function ( MediaWikiServices $services ) {
 		return new ConfigMaxLagFactory(
 			$services->getMainConfig(), WbManifest::MAX_LAG_CONFIG
+		);
+	},
+	WbManifest::OAUTH_URL_FACTORY => function ( MediaWikiServices $services ) {
+		return new OAuthUrlFactory(
+			ExtensionRegistry::getInstance(),
+			$services->getSpecialPageFactory()
 		);
 	}
 ];

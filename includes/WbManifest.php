@@ -7,6 +7,7 @@ class WbManifest {
 	public const ENTITY_MAPPING_CONFIG = 'WbManifestWikidataEntityMapping';
 	public const EXTERNAL_SERVICES_CONFIG = 'WbManifestExternalServiceMapping';
 	public const MAX_LAG_CONFIG = 'WbManifestMaxLag';
+	public const OAUTH_URL_FACTORY = 'WbManifestOAuthUrlFactory';
 	public const WIKIBASE_MANIFEST_GENERATOR = 'WikibaseManifestGenerator';
 	public const WIKIBASE_MANIFEST_CONFIG_EXTERNAL_SERVICES_FACTORY = 'WikibaseManifestConfigExternalServicesFactory';
 	public const WIKIBASE_MANIFEST_CONFIG_EQUIV_ENTITIES_FACTORY = 'WikibaseManifestConfigEquivEntitiesFactory';

@@ -46,7 +46,7 @@ class ManifestGeneratorIntegrationTest extends MediaWikiIntegrationTestCase {
 		$generator = MediaWikiServices::getInstance()->getService( 'WikibaseManifestGenerator' );
 		$result = $generator->generate();
 
-		$this->assertEquals( 9, count( $result ) );
+		$this->assertEquals( 10, count( $result ) );
 
 		$this->assertArrayHasKey( self::NAME, $result );
 		$this->assertIsString( $result[self::NAME] );
@@ -113,6 +113,8 @@ class ManifestGeneratorIntegrationTest extends MediaWikiIntegrationTestCase {
 		$this->assertArrayHasKey( self::MAX_LAG, $result );
 		$this->assertIsInt( $result[self::MAX_LAG] );
 		$this->assertEquals( $maxLag, $result[self::MAX_LAG] );
+
+		$this->assertArrayHasKey( 'registration_page', $result['oauth'] );
 	}
 
 	public function testMaxLagDefaultValue() {
