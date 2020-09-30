@@ -27,7 +27,7 @@ And configure as appropriate:
 $wgWbManifestExternalServiceMapping = [
 	'queryservice_ui' => 'https://query.wikidata.org',
 ];
-$wgWbManifestWikidataMapping = [
+$wgWbManifestWikidataEntityMapping = [
 	'properties' => [
 		'P31' => 'P1',
 	],
