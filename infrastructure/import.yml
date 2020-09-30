@@ -30,3 +30,12 @@
       command:
           chdir: "{{ PROJECT_DIR }}"
           cmd: "docker-compose exec -T wikibase php extensions/WikibaseImport/maintenance/importEntities.php --file /var/www/html/extensions/WikibaseImport/data/importIds.txt"
+    - name: Ensure config building script is in place
+      copy:
+          src: "files/makeManifestEntityConfig.php"
+          dest: "{{ MW_PATH }}/makeManifestEntityConfig.php"
+          mode: 0644
+    - name: make equivalent entity config
+      command:
+          chdir: "{{ PROJECT_DIR }}"
+          cmd: "docker-compose exec -T wikibase php makeManifestEntityConfig.php"
