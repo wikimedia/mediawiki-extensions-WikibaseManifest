@@ -34,7 +34,7 @@
 	"type": "other",
 	"RestRoutes": [
 		{
-			"path": "/wikibase/manifest/v0/manifest",
+			"path": "/wikibase-manifest/v0/manifest",
 			"method": "GET",
 			"class": "MediaWiki\\Extension\\WikibaseManifest\\RestApi",
 			"services": [

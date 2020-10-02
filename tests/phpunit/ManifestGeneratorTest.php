@@ -63,7 +63,7 @@ class ManifestGeneratorTest extends TestCase {
 			->method( 'getExternalServices' )
 			->willReturn( new ExternalServices( $externalServicesMappings ) );
 
-		$entityNamespaceMapping = [ 'item' => [ 'namespace_id' => 123, 'namespace_string' => 'Cat' ] ];
+		$entityNamespaceMapping = [ 'item' => [ 'namespace_id' => 123, 'namespace_name' => 'Cat' ] ];
 		$mockEntityNamespacesFactory = $this->createMock( EntityNamespacesFactory::class );
 		$mockEntityNamespacesFactory->expects( $this->atLeastOnce() )
 			->method( 'getEntityNamespaces' )

@@ -3,7 +3,7 @@
 const { assert, REST } = require( 'api-testing' );
 
 describe( 'Manifest', () => {
-	const client = new REST( 'rest.php/wikibase/manifest/v0' );
+	const client = new REST( 'rest.php/wikibase-manifest/v0' );
 
 	describe( 'GET /manifest', () => {
 		it( 'should return the manifest', async () => {

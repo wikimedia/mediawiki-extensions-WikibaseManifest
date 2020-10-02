@@ -19,7 +19,7 @@ class LocalSourceEntityNamespacesFactory implements EntityNamespacesFactory {
 			function ( $x ) {
 				return [
 					EntityNamespaces::NAMESPACE_ID => $x,
-					EntityNamespaces::NAMESPACE_STRING => $this->namespaceInfo->getCanonicalName(
+					EntityNamespaces::NAMESPACE_NAME => $this->namespaceInfo->getCanonicalName(
 						$x )
 				];
 			},

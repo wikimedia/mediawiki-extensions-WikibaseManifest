@@ -7,7 +7,7 @@ use InvalidArgumentException;
 class EntityNamespaces {
 
 	public const NAMESPACE_ID = 'namespace_id';
-	public const NAMESPACE_STRING = 'namespace_string';
+	public const NAMESPACE_NAME = 'namespace_name';
 
 	/**
 	 * @var array
@@ -31,9 +31,9 @@ class EntityNamespaces {
 			if (
 				!is_array( $v )
 				|| !array_key_exists( self::NAMESPACE_ID, $v )
-				|| !array_key_exists( self::NAMESPACE_STRING, $v )
+				|| !array_key_exists( self::NAMESPACE_NAME, $v )
 				|| !is_int( $v[self::NAMESPACE_ID] )
-				|| !is_string( $v[self::NAMESPACE_STRING] )
+				|| !is_string( $v[self::NAMESPACE_NAME] )
 			) {
 				throw new InvalidArgumentException( 'Values of mapping should be arrays with needed keys and correct types' );
 			}

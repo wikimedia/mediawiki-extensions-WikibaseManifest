@@ -9,7 +9,7 @@
 	"scripts": {
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
-			"phpcs -p -s",
+			"phpcs -p -s includes/ tests/phpunit/",
 			"minus-x check ."
 		],
 		"fix": [

@@ -11,8 +11,8 @@ class LocalSourceEntityNamespacesFactoryTest extends TestCase {
 	public function testGetEntityNamespaces() {
 		$itemNamespaceId = 0;
 		$propertyNamespaceId = 123;
-		$itemNamespaceString = '';
-		$propertyNamespaceString = 'Property';
+		$itemNamespaceName = '';
+		$propertyNamespaceName = 'Property';
 		$entityNamespaceIds = [
 			'item' => $itemNamespaceId,
 			'property' => $propertyNamespaceId,
@@ -26,8 +26,8 @@ class LocalSourceEntityNamespacesFactoryTest extends TestCase {
 		$namespaceInfo = $this->createMock( NamespaceInfo::class );
 		$namespaceInfo->expects( $this->any() )->method( 'getCanonicalName' )->willReturnMap(
 				[
-					[ $itemNamespaceId, $itemNamespaceString ],
-					[ $propertyNamespaceId, $propertyNamespaceString ],
+					[ $itemNamespaceId, $itemNamespaceName ],
+					[ $propertyNamespaceId, $propertyNamespaceName ],
 				]
 			);
 
@@ -39,11 +39,11 @@ class LocalSourceEntityNamespacesFactoryTest extends TestCase {
 			[
 				'item' => [
 					'namespace_id' => $itemNamespaceId,
-					'namespace_string' => $itemNamespaceString,
+					'namespace_name' => $itemNamespaceName,
 				],
 				'property' => [
 					'namespace_id' => $propertyNamespaceId,
-					'namespace_string' => $propertyNamespaceString,
+					'namespace_name' => $propertyNamespaceName,
 				],
 			],
 			$entityNamespacesFactory->getEntityNamespaces()->toArray()
