@@ -29,7 +29,11 @@
           "rest_api": {
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "action_api",
+          "rest_api"
+        ]
       }
     },
     "required": [
