@@ -3,9 +3,9 @@
 namespace WikibaseManifest\Test;
 
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
-class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
+class ManifestGeneratorIntegrationTest extends MediaWikiIntegrationTestCase {
 
 	private const NAME = 'name';
 	private const ROOT_SCRIPT_URL = 'root_script_url';
@@ -22,7 +22,7 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 		$serverString = 'http://cat/dog';
 		$scriptString = '/wikipath';
 		$rootScriptUrlString = $serverString . $scriptString;
-		$mainPageUrlString = $serverString . '/index.php/Main_Page';
+		$mainPageUrlString = $serverString . $scriptString . '/index.php/Main_Page';
 		$actionApiUrlString = $serverString . $scriptString . '/api.php';
 		$restApiUrlString = $serverString . $scriptString . '/rest.php';
 		$equivEntities = [
@@ -36,6 +36,7 @@ class ManifestGeneratorIntegrationTest extends MediaWikiTestCase {
 			'wgServer' => $serverString,
 			'wgSitename' => $siteString,
 			'wgScriptPath' => $scriptString,
+			'wgArticlePath' => $serverString . $scriptString . '/index.php/$1',
 			'wgWbManifestWikidataEntityMapping' => $equivEntities,
 			'wgWbManifestExternalServiceMapping' => $externalServices,
 			'wgWbManifestMaxLag' => $maxLag
