@@ -70,10 +70,7 @@
           }
         }
       }
-    },
-    "required": [
-      "equiv_entities"
-    ]
+    }
   },
   "LocalRdfNamespaces": {
     "type": "object",
