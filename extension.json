@@ -39,7 +39,8 @@
 			"class": "MediaWiki\\Extension\\WikibaseManifest\\RestApi",
 			"services": [
 				"WikibaseManifestGenerator",
-				"EmptyArrayCleaner"
+				"EmptyArrayCleaner",
+				"EmptyValueCleaner"
 			]
 		}
 	],

@@ -5,6 +5,7 @@ use MediaWiki\Extension\WikibaseManifest\ConfigEquivEntitiesFactory;
 use MediaWiki\Extension\WikibaseManifest\ConfigExternalServicesFactory;
 use MediaWiki\Extension\WikibaseManifest\ConfigMaxLagFactory;
 use MediaWiki\Extension\WikibaseManifest\EmptyArrayCleaner;
+use MediaWiki\Extension\WikibaseManifest\EmptyValueCleaner;
 use MediaWiki\Extension\WikibaseManifest\LocalSourceEntityNamespacesFactory;
 use MediaWiki\Extension\WikibaseManifest\ManifestGenerator;
 use MediaWiki\Extension\WikibaseManifest\TitleFactoryMainPageUrl;
@@ -57,6 +58,9 @@ return [
 	},
 	WbManifest::EMPTY_ARRAY_CLEANER => function () {
 		return new EmptyArrayCleaner();
+	},
+	WbManifest::EMPTY_VALUE_CLEANER => function () {
+		return new EmptyValueCleaner();
 	},
 	WbManifest::WIKIBASE_MANIFEST_LOCAL_SOURCE_ENTITY_NAMESPACES_FACTORY => function ( MediaWikiServices $services
 	) {

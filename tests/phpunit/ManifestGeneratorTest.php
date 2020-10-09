@@ -107,21 +107,4 @@ class ManifestGeneratorTest extends TestCase {
 			$this->assertSame( $value, $result[$key] );
 		}
 	}
-
-	public function testGivenEquivEntitiesIsNotConfigured_WikidataOrgObjectIsNotGeneratedInTheManifest() {
-		$generator = new ManifestGenerator(
-			new HashConfig( [ 'Server' => '', 'Sitename' => '', 'ScriptPath' => '', 'api' => [ 'action' => '', 'rest' => '' ] ] ),
-			$this->createMock( TitleFactoryMainPageUrl::class ),
-			$this->createMock( EquivEntitiesFactory::class ),
-			$this->createMock( ConceptNamespaces::class ),
-			$this->createMock( ExternalServicesFactory::class ),
-			$this->createMock( EntityNamespacesFactory::class ),
-			$this->createMock( MaxLagFactory::class )
-		);
-
-		$actualResult = $generator->generate();
-
-		$this->assertArrayHasKey( 'equiv_entities', $actualResult );
-		$this->assertSame( [], $actualResult[ 'equiv_entities' ] );
-	}
 }
