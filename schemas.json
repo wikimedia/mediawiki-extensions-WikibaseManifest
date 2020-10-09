@@ -6,8 +6,8 @@
       "root_script_url": "https://www.wikidata.org/wiki",
       "main_page_url": "https://www.wikidata.org/wiki/Wikidata:Main_Page",
       "api": {
-        "action_api": "https://www.wikidata.org/w/api.php",
-        "rest_api": "https://www.wikidata.org/w/rest.php"
+        "action": "https://www.wikidata.org/w/api.php",
+        "rest": "https://www.wikidata.org/w/rest.php"
       }
     },
     "properties": {
@@ -23,16 +23,16 @@
       "api": {
         "type": "object",
         "properties": {
-          "action_api": {
+          "action": {
             "type": "string"
           },
-          "rest_api": {
+          "rest": {
             "type": "string"
           }
         },
         "required": [
-          "action_api",
-          "rest_api"
+          "action",
+          "rest"
         ]
       }
     },
