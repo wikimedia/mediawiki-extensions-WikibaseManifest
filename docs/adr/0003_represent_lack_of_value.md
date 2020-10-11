@@ -4,7 +4,7 @@ Date: 2020-10-01
 
 ## Status
 
-proposed
+accepted
 
 ## Context
 
@@ -24,14 +24,17 @@ As of the moment of writing this ADR we are not aware of any properties that are
 
 - [Google's JSON style guide](https://google.github.io/styleguide/jsoncstyleguide.xml#Empty/Null_Property_Values) suggests omitting optional, empty or null values, unless there's a strong semantic reason for their existence.
 
-- We should consider the client needs: Does it have a strong need to make a difference between a missing key, an empty value, or a null value? If not, the Manifest should probably not distinguish between them and omit the property.
+- As far as we are aware the client does not have a strong need to make a difference between a missing key, an empty value, or a null value.
 
-- [OpenAPI 3.0](https://swagger.io/docs/specification/data-models/data-types/#null) doesn't have a `null` type per se, but it is possible to communicate a value is null by using `nullable: true`.
+- [OpenAPI 3.0](https://swagger.io/docs/specification/data-models/data-types/#null) doesn't have a null type per se, but it is possible to communicate a value is null by using `nullable: true`.
 
 - [The MediaWiki REST API's design principles](https://www.mediawiki.org/wiki/Core_Platform_Team/Initiative/Core_REST_API_in_Mediawiki/Design_principles) state that "Empty properties should have the value null".
 
 ## Decision
 
+Represent lack of value of optional spec properties by omitting the property from the response.
 
 ## Consequences
 
+- Have a concise response that doesn't include values which don't carry meaning.
+- We are consciously breaking the [MediaWiki REST API's design principles](https://www.mediawiki.org/wiki/Core_Platform_Team/Initiative/Core_REST_API_in_Mediawiki/Design_principles) by choosing to omit a property over setting its value to null.
