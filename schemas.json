@@ -100,7 +100,9 @@
     "type": "object",
     "example": {
       "external_services": {
+        "queryservice": "https://wikibase-query-testing.wmflabs.org/proxy/wdqs/bigdata/#namespaces/wdq/sparql",
         "queryservice_ui": "https://wikibase-query-testing.wmflabs.org/",
+        "quickstatements": "https://quickstatements.toolforge.org/",
         "openrefine_reconcile": "https://www.example.org/api"
       }
     },
