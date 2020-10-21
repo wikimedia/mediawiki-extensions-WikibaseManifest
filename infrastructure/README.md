@@ -10,7 +10,7 @@ $ ansible --version
 ansible 2.9.6
 ```
 
-You need to be in possession of an SSH private key for which there is a associated user that is authorized to perform the operations.
+You need to be in possession of an SSH private key for which there is an associated user that is authorized to perform the operations.
 
 ### Inventory
 
@@ -22,6 +22,7 @@ The file `inventory.yml` contains a single host, which is the target for the tes
 Set up your VPS instance on https://horizon.wikimedia.org and a web proxy to reach it from the internet, then:
 ```sh
 $ cd extensions/WikibaseManifest/infrastructure
+$ ansible-galaxy install -r requirements.yml
 $ ansible-playbook setup.yml --limit <hostname>.wikidata-dev.eqiad.wmflabs
 ```
 

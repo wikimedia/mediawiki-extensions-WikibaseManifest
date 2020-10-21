@@ -1,6 +1,26 @@
 - hosts: test_systems
   name: "Setup and run a test system for the 'WikibaseManifest' extension"
   become: yes
+  vars:
+    VECTOR_SUBPATH: "skins/Vector"
+    ULS_SUBPATH: "extensions/UniversalLanguageSelector"
+    CLDR_SUBPATH: "extensions/cldr"
+    WIKIBASE_SUBPATH: "extensions/Wikibase"
+    WIKIBASEMANIFEST_SUBPATH: "extensions/WikibaseManifest"
+    OAUTH_SUBPATH: "extensions/OAuth"
+  roles:
+    - role: git_updater
+      vars:
+        git_directories:
+          - "{{ MW_PATH }}"
+          - "{{ MW_PATH }}/{{ VECTOR_SUBPATH }}"
+          - "{{ MW_PATH }}/{{ ULS_SUBPATH }}"
+          - "{{ MW_PATH }}/{{ CLDR_SUBPATH }}"
+          - "{{ MW_PATH }}/{{ WIKIBASE_SUBPATH }}"
+          - "{{ MW_PATH }}/{{ WIKIBASEMANIFEST_SUBPATH }}"
+          - "{{ MW_PATH }}/{{ OAUTH_SUBPATH }}"
+        USERNAME: mediawiki
+
   tasks:
     - name: Ensure essential system packages are installed
       package:
@@ -76,17 +96,17 @@
 
     - name: Clone Vector skin and extensions
       git:
-          repo: "https://gerrit.wikimedia.org/r/mediawiki/{{ item.path }}"
-          dest: "{{ MW_PATH }}/{{ item.path }}"
+          repo: "https://gerrit.wikimedia.org/r/mediawiki/{{ item }}"
+          dest: "{{ MW_PATH }}/{{ item }}"
           depth: 1
           version: "master"
       loop:
-          - { path: "skins/Vector" }
-          - { path: "extensions/UniversalLanguageSelector" }
-          - { path: "extensions/cldr" }
-          - { path: "extensions/Wikibase" }
-          - { path: "extensions/WikibaseManifest" }
-          - { path: "extensions/OAuth" }
+          - "{{ VECTOR_SUBPATH }}"
+          - "{{ ULS_SUBPATH }}"
+          - "{{ CLDR_SUBPATH }}"
+          - "{{ WIKIBASE_SUBPATH }}"
+          - "{{ WIKIBASEMANIFEST_SUBPATH }}"
+          - "{{ OAUTH_SUBPATH }}"
 
     - name: Ensure composer.local.json is in place
       copy:
