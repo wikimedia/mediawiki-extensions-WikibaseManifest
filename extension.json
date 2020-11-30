@@ -31,7 +31,7 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\WikibaseManifest\\": "includes/"
 	},
-	"type": "other",
+	"type": "wikibase",
 	"RestRoutes": [
 		{
 			"path": "/wikibase-manifest/v0/manifest",
