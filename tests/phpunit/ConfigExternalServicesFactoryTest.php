@@ -7,6 +7,9 @@ use MediaWiki\Extension\WikibaseManifest\ConfigExternalServicesFactory;
 use MediaWiki\Extension\WikibaseManifest\WbManifest;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\ConfigExternalServicesFactory
+ */
 class ConfigExternalServicesFactoryTest extends TestCase {
 
 	public function externalServicesDataProvider() {

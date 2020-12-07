@@ -5,6 +5,9 @@ namespace WikibaseManifest\Test;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\ManifestGenerator
+ */
 class ManifestGeneratorIntegrationTest extends MediaWikiIntegrationTestCase {
 
 	private const NAME = 'name';

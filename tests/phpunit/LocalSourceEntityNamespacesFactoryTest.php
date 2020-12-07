@@ -6,6 +6,9 @@ use NamespaceInfo;
 use PHPUnit\Framework\TestCase;
 use Wikibase\DataAccess\EntitySource;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\LocalSourceEntityNamespacesFactory
+ */
 class LocalSourceEntityNamespacesFactoryTest extends TestCase {
 
 	public function testGetEntityNamespaces() {

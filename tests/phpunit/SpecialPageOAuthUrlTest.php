@@ -8,6 +8,9 @@ use MediaWiki\Extensions\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegis
 use MediaWikiIntegrationTestCase;
 use WikiMap;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\SpecialPageOAuthUrl
+ */
 class SpecialPageOAuthUrlTest extends MediaWikiIntegrationTestCase {
 
 	public function testGetValue() {

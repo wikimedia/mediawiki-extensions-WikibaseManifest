@@ -4,6 +4,9 @@ namespace MediaWiki\Extension\WikibaseManifest;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\EmptyValueCleaner
+ */
 class EmptyValueCleanerTest extends TestCase {
 
 	public function dataProvider() {
