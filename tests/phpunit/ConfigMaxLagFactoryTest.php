@@ -8,6 +8,9 @@ use MediaWiki\Extension\WikibaseManifest\MaxLag;
 use MediaWiki\Extension\WikibaseManifest\WbManifest;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\ConfigMaxLagFactory
+ */
 class ConfigMaxLagFactoryTest extends TestCase {
 
 	public function test() {

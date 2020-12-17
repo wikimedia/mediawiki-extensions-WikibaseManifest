@@ -6,6 +6,9 @@ use InvalidArgumentException;
 use MediaWiki\Extension\WikibaseManifest\ExternalServices;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\ExternalServices
+ */
 class ExternalServicesTest extends TestCase {
 
 	public function dataProvider() {

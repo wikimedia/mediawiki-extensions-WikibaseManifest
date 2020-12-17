@@ -7,6 +7,9 @@ use MediaWiki\Extensions\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegis
 use MediaWiki\Special\SpecialPageFactory;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\OAuthUrlFactory
+ */
 class OAuthUrlFactoryTest extends TestCase {
 
 	public function testGetOAuthUrl_returnsNullOAuthIfExtensionMissing() {

@@ -6,6 +6,9 @@ use InvalidArgumentException;
 use MediaWiki\Extension\WikibaseManifest\EntityNamespaces;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @covers \MediaWiki\Extension\WikibaseManifest\EntityNamespaces
+ */
 class EntityNamespacesTest extends TestCase {
 
 	public function dataProvider() {
