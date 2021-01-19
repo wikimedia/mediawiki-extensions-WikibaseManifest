@@ -37,8 +37,6 @@ class ConfigExternalServicesFactoryTest extends TestCase {
 
 	/**
 	 * @dataProvider externalServicesDataProvider
-	 * @param $expectedExternalServices
-	 * @param $configArray
 	 */
 	public function test( $expectedExternalServices, $configArray ) {
 		$configMappingName = WbManifest::EXTERNAL_SERVICES_CONFIG;

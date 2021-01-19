@@ -22,8 +22,6 @@ class MaxLagTest extends TestCase {
 
 	/**
 	 * @dataProvider dataProvider
-	 * @param $expectedSuccess
-	 * @param $configValue
 	 */
 	public function test( $expectedSuccess, $configValue ) {
 		if ( !$expectedSuccess ) {
