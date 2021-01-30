@@ -49,7 +49,7 @@ class ManifestGeneratorIntegrationTest extends MediaWikiIntegrationTestCase {
 		$generator = MediaWikiServices::getInstance()->getService( 'WikibaseManifestGenerator' );
 		$result = $generator->generate();
 
-		$this->assertEquals( 10, count( $result ) );
+		$this->assertCount( 10, $result );
 
 		$this->assertArrayHasKey( self::NAME, $result );
 		$this->assertIsString( $result[self::NAME] );
