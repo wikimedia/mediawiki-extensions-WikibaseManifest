@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Verdy p"
 		]
 	},
-	"wikibasemanifest-desc": "Combine les métadonnées d’une installation Wikibase l’exposant comme une simple API"
+	"wikibasemanifest-desc": "Combine les métadonnées d’une installation de Wikibase pour les exposer dans une API simple"
 }
