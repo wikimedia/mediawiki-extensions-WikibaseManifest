@@ -42,7 +42,8 @@ class ManifestGeneratorIntegrationTest extends MediaWikiIntegrationTestCase {
 			'wgArticlePath' => $serverString . $scriptString . '/index.php/$1',
 			'wgWbManifestWikidataEntityMapping' => $equivEntities,
 			'wgWbManifestExternalServiceMapping' => $externalServices,
-			'wgWbManifestMaxLag' => $maxLag
+			'wgWbManifestMaxLag' => $maxLag,
+			'wgLanguageCode' => 'en'
 			]
 		);
 		$this->mergeMwGlobalArrayValue( 'wgWBRepoSettings', [ 'sparqlEndpoint' => null ] );
