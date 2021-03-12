@@ -1,7 +1,7 @@
 # WikibaseManifest
 
 WikibaseManifest is an extension that combines metadata about a Wikibase installation exposing it as a simple API.
-The goal is to help tool makers write tools that can target any wikibase.
+The goal is to help toolmakers write tools that can target any Wikibase.
 
 The manifest will be exposed at an endpoint such as https://www.wikidata.org/w/rest.php/wikibase-manifest/v0/manifest
 
@@ -9,19 +9,13 @@ More about the format of the manifest and how it came to be can be found [here](
 
 ### Installation
 
-In order to use this extension you need to enable the MediaWiki REST API.
-
-```php
-$wgEnableRestAPI = true;
-```
-
-Then load the extension.
+In order to use this extension you need to load the extension.
 
 ```php
 wfLoadExtension( 'WikibaseManifest' );
 ```
 
-And configure as appropriate:
+Then configure as appropriate:
 
 ```php
 $wgWbManifestExternalServiceMapping = [
@@ -52,7 +46,7 @@ You can run the code linting with:
 composer test
 ```
 
-And fix with:
+Then fix errors with:
 ```sh
 composer fix
 ```
@@ -64,17 +58,17 @@ mw-docker-dev phpunit-file default extensions/WikibaseManifest/tests/phpunit/
 
 **JS**
 
-You can run the api end to end tests using :
+You can run the api end-to-end tests using:
 ```sh
 npm run api-testing
 ```
 
-You can run the api end to end test linting with:
+You can run the api end-to-end test linting with:
 ```sh
 npm run api-testing-lint
 ```
 
-And fix with
+Then fix errors with:
 ```sh
 npm run api-testing-lint -- --fix
 ```
