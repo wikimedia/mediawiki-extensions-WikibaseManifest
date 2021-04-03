@@ -3,7 +3,7 @@
 /**
  * Minimal set of classes necessary to fulfill needs of parts of Wikibase relying on
  * the OAuth extension.
- * @codingStandardsIgnoreFile
+ * phpcs:disable MediaWiki.Files.ClassMatchesFilename,Generic.Files.OneObjectStructurePerFile
  */
 namespace MediaWiki\Extensions\OAuth\Backend {
 	class Utils {
