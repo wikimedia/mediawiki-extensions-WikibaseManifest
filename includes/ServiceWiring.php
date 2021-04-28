@@ -53,8 +53,7 @@ return [
 		);
 	},
 	WbManifest::WIKIBASE_MANIFEST_CONCEPT_NAMESPACES => function ( MediaWikiServices $services ) {
-		$repo = WikibaseRepo::getDefaultInstance();
-		$rdfVocabulary = $repo->getRdfVocabulary();
+		$rdfVocabulary = WikibaseRepo::getRdfVocabulary( $services );
 		$localEntitySource = WikibaseRepo::getLocalEntitySource( $services );
 		// TODO: Get Canonical Document URLS from a service not straight from remote
 		return new ConceptNamespaces( $localEntitySource, $rdfVocabulary );
