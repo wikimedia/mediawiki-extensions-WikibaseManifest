@@ -23,6 +23,6 @@
 	},
 	"author": "",
 	"dependencies": {
-		"mocha": "^9.0.3"
+		"mocha": "^9.1.0"
 	}
 }
