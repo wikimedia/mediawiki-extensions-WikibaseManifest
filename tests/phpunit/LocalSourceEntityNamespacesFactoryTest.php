@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\WikibaseManifest;
 
 use NamespaceInfo;
 use PHPUnit\Framework\TestCase;
-use Wikibase\DataAccess\EntitySource;
+use Wikibase\DataAccess\DatabaseEntitySource;
 
 /**
  * @covers \MediaWiki\Extension\WikibaseManifest\LocalSourceEntityNamespacesFactory
@@ -21,7 +21,7 @@ class LocalSourceEntityNamespacesFactoryTest extends TestCase {
 			'property' => $propertyNamespaceId,
 		];
 
-		$localEntitySource = $this->createMock( EntitySource::class );
+		$localEntitySource = $this->createMock( DatabaseEntitySource::class );
 		$localEntitySource->expects( $this->once() )->method( 'getEntityNamespaceIds' )->willReturn(
 				$entityNamespaceIds
 			);
