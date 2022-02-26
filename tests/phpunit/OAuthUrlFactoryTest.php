@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\WikibaseManifest;
 
 use ExtensionRegistry;
 use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
-use MediaWiki\Special\SpecialPageFactory;
+use MediaWiki\SpecialPage\SpecialPageFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
