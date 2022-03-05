@@ -3,8 +3,8 @@
 namespace WikibaseManifest\Test;
 
 use ExtensionRegistry;
+use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
 use MediaWiki\Extension\WikibaseManifest\SpecialPageOAuthUrl;
-use MediaWiki\Extensions\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
 use MediaWikiIntegrationTestCase;
 use WikiMap;
 

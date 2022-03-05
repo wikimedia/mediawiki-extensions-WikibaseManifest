@@ -5,14 +5,14 @@
  * the OAuth extension.
  * phpcs:disable MediaWiki.Files.ClassMatchesFilename,Generic.Files.OneObjectStructurePerFile
  */
-namespace MediaWiki\Extensions\OAuth\Backend {
+namespace MediaWiki\Extension\OAuth\Backend {
 	class Utils {
 		public static function isCentralWiki() {
 		}
 	}
 }
 
-namespace MediaWiki\Extensions\OAuth\Frontend\SpecialPages {
+namespace MediaWiki\Extension\OAuth\Frontend\SpecialPages {
 	class SpecialMWOAuthConsumerRegistration {
 		public function getPageTitle( $subpage = false ) {
 		}

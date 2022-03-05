@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\WikibaseManifest;
 
 use ExtensionRegistry;
-use MediaWiki\Extensions\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
+use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
 use MediaWiki\Special\SpecialPageFactory;
 use PHPUnit\Framework\TestCase;
 
