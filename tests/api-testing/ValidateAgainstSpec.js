@@ -8,9 +8,10 @@ const expect = chai.expect;
 const { REST } = require( 'api-testing' );
 const swaggerCombine = require( 'swagger-combine' );
 const chaiResponseValidator = require( 'chai-openapi-response-validator' );
+const baseURL = 'rest.php/wikibase-manifest/v0';
 
 describe( 'Manifest', () => {
-	const client = new REST( 'rest.php/wikibase-manifest/v0' );
+	const client = new REST( baseURL );
 
 	describe( 'GET /manifest', function () {
 		it( 'should return status code 200', async function () {
@@ -27,7 +28,7 @@ describe( 'Manifest', () => {
 			spec.servers.push(
 				{
 					// get the server's URL from api-testing REST client
-					url: response.request.app,
+					url: response.request.app + baseURL,
 					description: 'Dynamically added CI test system'
 				}
 			);
