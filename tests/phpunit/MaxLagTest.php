@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class MaxLagTest extends TestCase {
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[ true, 23 ],
 			[ false, 23.42 ],

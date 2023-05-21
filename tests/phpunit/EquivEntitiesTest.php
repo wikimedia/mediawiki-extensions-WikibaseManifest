@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class EquivEntitiesTest extends TestCase {
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[ true, [ 'properties' => [ 'P12' => 'P34' ] ] ],
 			[ true, [ 'items' => [ 'Q42' => 'Q1' ] ] ],

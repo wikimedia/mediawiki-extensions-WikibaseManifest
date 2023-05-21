@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ExternalServicesTest extends TestCase {
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[ true, [ ExternalServices::KEY_OPENREFINE_RECONCILE => 'http://addshore.com' ] ],
 			[ true, [ ExternalServices::KEY_QUERYSERVICE => 'http://addshore.com' ] ],

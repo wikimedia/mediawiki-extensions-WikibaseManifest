@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ConfigExternalServicesFactoryTest extends TestCase {
 
-	public function externalServicesDataProvider() {
+	public static function externalServicesDataProvider() {
 		return [
 			[ [], [
 				'WbManifestExternalServiceMapping' => [],

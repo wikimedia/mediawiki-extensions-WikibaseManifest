@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
  */
 class EmptyValueCleanerTest extends TestCase {
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[
 				[ 'cat' => 'dog' ],

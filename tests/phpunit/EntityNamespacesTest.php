@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 class EntityNamespacesTest extends TestCase {
 
-	public function dataProvider() {
+	public static function dataProvider() {
 		return [
 			[ true, [ 'foo' => [ 'namespace_id' => 1, 'namespace_name' => '' ] ] ],
 			[ true, [ 'foo' => [ 'namespace_id' => 120, 'namespace_name' => 'Foo' ] ] ],
