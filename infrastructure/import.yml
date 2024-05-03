@@ -22,7 +22,7 @@
         src: files/importIds.txt
         dest: "{{ MW_PATH }}/extensions/WikibaseImport/data/importIds.txt"
         mode: 0644
-    - name: Run Mediawiki update script to create WikibaseImport tables
+    - name: Run MediaWiki update script to create WikibaseImport tables
       command:
         chdir: "{{ PROJECT_DIR }}"
         cmd: docker-compose exec -T wikibase php maintenance/update.php

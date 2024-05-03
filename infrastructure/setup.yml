@@ -163,7 +163,7 @@
         group: root
         mode: 0644
 
-    - name: Recursively change ownership of Mediawiki directory to allow update
+    - name: Recursively change ownership of MediaWiki directory to allow update
       file:
         path: "{{ MW_PATH }}"
         recurse: yes
