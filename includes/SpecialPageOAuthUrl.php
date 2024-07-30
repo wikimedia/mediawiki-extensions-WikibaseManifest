@@ -22,13 +22,11 @@ class SpecialPageOAuthUrl implements OAuthUrl {
 
 	public function getValue(): string {
 		if ( Utils::isCentralWiki() ) {
-				$url = $this->specialPage->getPageTitle()->getFullURL();
-		} else {
-				$url = WikiMap::getForeignURL(
-					$this->config->get( 'MWOAuthCentralWiki' ),
-					'Special:OAuthConsumerRegistration'
-				);
+			return $this->specialPage->getPageTitle()->getFullURL();
 		}
-		return $url;
+		return WikiMap::getForeignURL(
+			$this->config->get( 'MWOAuthCentralWiki' ),
+			'Special:OAuthConsumerRegistration'
+		);
 	}
 }
