@@ -30,10 +30,8 @@ class SpecialPageOAuthUrlTest extends MediaWikiIntegrationTestCase {
 	}
 
 	private function mockThisWikiToBeAnOAuthCentralWiki(): void {
-		$this->setMwGlobals(
-			[
-				'wgMWOAuthCentralWiki' => WikiMap::getCurrentWikiId(),
-			]
-		);
+		$this->overrideConfigValues( [
+			'MWOAuthCentralWiki' => WikiMap::getCurrentWikiId(),
+		] );
 	}
 }

@@ -2,6 +2,7 @@
 
 namespace WikibaseManifest\Test;
 
+use MediaWiki\MainConfigNames;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 
@@ -34,18 +35,16 @@ class ManifestGeneratorIntegrationTest extends MediaWikiIntegrationTestCase {
 		];
 		$externalServices = [ 'quickstatements' => 'http://quickstatements.net' ];
 		$maxLag = 23;
-		$this->setMwGlobals(
-			[
-			'wgServer' => $serverString,
-			'wgSitename' => $siteString,
-			'wgScriptPath' => $scriptString,
-			'wgArticlePath' => $serverString . $scriptString . '/index.php/$1',
-			'wgWbManifestWikidataEntityMapping' => $equivEntities,
-			'wgWbManifestExternalServiceMapping' => $externalServices,
-			'wgWbManifestMaxLag' => $maxLag,
-			'wgLanguageCode' => 'en'
-			]
-		);
+		$this->overrideConfigValues( [
+			MainConfigNames::Server => $serverString,
+			MainConfigNames::Sitename => $siteString,
+			MainConfigNames::ScriptPath => $scriptString,
+			MainConfigNames::ArticlePath => $serverString . $scriptString . '/index.php/$1',
+			'WbManifestWikidataEntityMapping' => $equivEntities,
+			'WbManifestExternalServiceMapping' => $externalServices,
+			'WbManifestMaxLag' => $maxLag,
+			MainConfigNames::LanguageCode => 'en',
+		] );
 		$this->mergeMwGlobalArrayValue( 'wgWBRepoSettings', [ 'sparqlEndpoint' => null ] );
 		$generator = MediaWikiServices::getInstance()->getService( 'WikibaseManifestGenerator' );
 		$result = $generator->generate();
