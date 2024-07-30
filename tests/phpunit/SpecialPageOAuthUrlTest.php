@@ -19,9 +19,11 @@ class SpecialPageOAuthUrlTest extends MediaWikiIntegrationTestCase {
 			$this->markTestSkipped( 'OAuth is not enabled' );
 		}
 		$this->mockThisWikiToBeAnOAuthCentralWiki();
+		$services = $this->getServiceContainer();
 		$specialPage = new SpecialMWOAuthConsumerRegistration(
-			$this->getServiceContainer()->getGrantsInfo(),
-			$this->getServiceContainer()->getGrantsLocalization()
+			$services->getPermissionManager(),
+			$services->getGrantsInfo(),
+			$services->getGrantsLocalization()
 		);
 		$OAuthUrl = new SpecialPageOAuthUrl( $specialPage );
 		$this->assertStringEndsWith( 'Special:OAuthConsumerRegistration', $OAuthUrl->getValue() );
