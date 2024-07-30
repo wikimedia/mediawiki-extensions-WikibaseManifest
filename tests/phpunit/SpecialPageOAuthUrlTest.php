@@ -25,7 +25,10 @@ class SpecialPageOAuthUrlTest extends MediaWikiIntegrationTestCase {
 			$services->getGrantsInfo(),
 			$services->getGrantsLocalization()
 		);
-		$OAuthUrl = new SpecialPageOAuthUrl( $specialPage );
+		$OAuthUrl = new SpecialPageOAuthUrl(
+			$services->getMainConfig(),
+			$specialPage
+		);
 		$this->assertStringEndsWith( 'Special:OAuthConsumerRegistration', $OAuthUrl->getValue() );
 	}
 
