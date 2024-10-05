@@ -13,13 +13,13 @@ const baseURL = 'rest.php/wikibase-manifest/v0';
 describe( 'Manifest', () => {
 	const client = new REST( baseURL );
 
-	describe( 'GET /manifest', function () {
-		it( 'should return status code 200', async function () {
+	describe( 'GET /manifest', () => {
+		it( 'should return status code 200', async () => {
 			const response = await client.get( '/manifest' );
 			expect( response.status ).to.equal( 200 );
 		} );
 
-		it( 'should satisfy the OpenAPI spec', async function () {
+		it( 'should satisfy the OpenAPI spec', async () => {
 			const response = await client.get( '/manifest' );
 
 			// read openapi spec file and combine with referenced schemas
