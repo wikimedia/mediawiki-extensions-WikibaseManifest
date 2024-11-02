@@ -14,7 +14,7 @@ class SpecialPageOAuthUrl implements OAuthUrl {
 
 	public function __construct(
 		Config $config,
-		SpecialMWOAuthConsumerRegistration $specialPage = null
+		?SpecialMWOAuthConsumerRegistration $specialPage = null
 	) {
 		$this->config = $config;
 		$this->specialPage = $specialPage;
