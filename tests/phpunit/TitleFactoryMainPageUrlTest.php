@@ -3,8 +3,8 @@
 namespace WikibaseManifest\Test;
 
 use MediaWiki\Extension\WikibaseManifest\TitleFactoryMainPageUrl;
+use MediaWiki\Title\Title;
 use PHPUnit\Framework\TestCase;
-use Title;
 use TitleFactory;
 
 /**

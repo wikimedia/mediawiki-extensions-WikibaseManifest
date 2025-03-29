@@ -5,8 +5,8 @@ namespace WikibaseManifest\Test;
 use ExtensionRegistry;
 use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
 use MediaWiki\Extension\WikibaseManifest\SpecialPageOAuthUrl;
+use MediaWiki\WikiMap\WikiMap;
 use MediaWikiIntegrationTestCase;
-use WikiMap;
 
 /**
  * @covers \MediaWiki\Extension\WikibaseManifest\SpecialPageOAuthUrl

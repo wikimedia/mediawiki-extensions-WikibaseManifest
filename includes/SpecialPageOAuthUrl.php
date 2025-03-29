@@ -5,7 +5,7 @@ namespace MediaWiki\Extension\WikibaseManifest;
 use Config;
 use MediaWiki\Extension\OAuth\Backend\Utils;
 use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
-use WikiMap;
+use MediaWiki\WikiMap\WikiMap;
 
 class SpecialPageOAuthUrl implements OAuthUrl {
 
