@@ -40,6 +40,7 @@
 		"strict": "warn",
 		"block-scoped-var": "warn",
 		"no-constant-binary-expression": "warn",
-		"yml/no-empty-mapping-value": "warn"
+		"yml/no-empty-mapping-value": "warn",
+		"no-unmodified-loop-condition": "warn"
 	}
 }
