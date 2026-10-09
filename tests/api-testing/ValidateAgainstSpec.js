@@ -8,7 +8,7 @@ const expect = chai.expect;
 const { REST } = require( 'api-testing' );
 const swaggerCombine = require( 'swagger-combine' );
 const chaiResponseValidator = require( 'chai-openapi-response-validator' );
-const baseURL = 'rest.php/wikibase-manifest/v0';
+const baseURL = '/rest.php/wikibase-manifest/v0';
 
 describe( 'Manifest', () => {
 	const client = new REST( baseURL );
