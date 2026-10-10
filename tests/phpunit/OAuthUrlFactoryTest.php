@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\WikibaseManifest;
 
 use Config;
 use ExtensionRegistry;
-use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\SpecialPage\SpecialPageFactory;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +25,7 @@ class OAuthUrlFactoryTest extends TestCase {
 		$config = $this->createMock( Config::class );
 		$extensionRegistry = $this->createMock( ExtensionRegistry::class );
 		$specialPageFactory = $this->createMock( SpecialPageFactory::class );
-		$mockSpecialPage = $this->createMock( SpecialMWOAuthConsumerRegistration::class );
+		$mockSpecialPage = $this->createMock( SpecialPage::class );
 		$specialPageFactory->expects( $this->atLeastOnce() )
 			->method( 'getPage' )->willReturn( $mockSpecialPage );
 		$extensionRegistry->expects( $this->atLeastOnce() )

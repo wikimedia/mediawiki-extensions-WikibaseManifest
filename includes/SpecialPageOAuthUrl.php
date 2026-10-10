@@ -4,7 +4,7 @@ namespace MediaWiki\Extension\WikibaseManifest;
 
 use Config;
 use MediaWiki\Extension\OAuth\Backend\Utils;
-use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
+use MediaWiki\SpecialPage\SpecialPage;
 use MediaWiki\WikiMap\WikiMap;
 
 class SpecialPageOAuthUrl implements OAuthUrl {
@@ -14,7 +14,7 @@ class SpecialPageOAuthUrl implements OAuthUrl {
 
 	public function __construct(
 		Config $config,
-		?SpecialMWOAuthConsumerRegistration $specialPage = null
+		?SpecialPage $specialPage = null
 	) {
 		$this->config = $config;
 		$this->specialPage = $specialPage;

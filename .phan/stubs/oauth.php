@@ -11,10 +11,3 @@ namespace MediaWiki\Extension\OAuth\Backend {
 		}
 	}
 }
-
-namespace MediaWiki\Extension\OAuth\Frontend\SpecialPages {
-	class SpecialMWOAuthConsumerRegistration {
-		public function getPageTitle( $subpage = false ) {
-		}
-	}
-}

@@ -3,7 +3,6 @@
 namespace WikibaseManifest\Test;
 
 use ExtensionRegistry;
-use MediaWiki\Extension\OAuth\Frontend\SpecialPages\SpecialMWOAuthConsumerRegistration;
 use MediaWiki\Extension\WikibaseManifest\SpecialPageOAuthUrl;
 use MediaWiki\WikiMap\WikiMap;
 use MediaWikiIntegrationTestCase;
@@ -20,12 +19,7 @@ class SpecialPageOAuthUrlTest extends MediaWikiIntegrationTestCase {
 		}
 		$this->mockThisWikiToBeAnOAuthCentralWiki();
 		$services = $this->getServiceContainer();
-		$specialPage = new SpecialMWOAuthConsumerRegistration(
-			$services->getPermissionManager(),
-			$services->getGrantsInfo(),
-			$services->getGrantsLocalization(),
-			$services->getUrlUtils(),
-		);
+		$specialPage = $services->getSpecialPageFactory()->getPage( 'OAuthConsumerRegistration' );
 		$OAuthUrl = new SpecialPageOAuthUrl(
 			$services->getMainConfig(),
 			$specialPage
