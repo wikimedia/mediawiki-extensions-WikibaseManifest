@@ -41,6 +41,7 @@
 		"block-scoped-var": "warn",
 		"no-constant-binary-expression": "warn",
 		"yml/no-empty-mapping-value": "warn",
-		"no-unmodified-loop-condition": "warn"
+		"no-unmodified-loop-condition": "warn",
+		"compat/compat": "warn"
 	}
 }
